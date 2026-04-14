@@ -1,0 +1,1768 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#000080">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Tween 82.8">
+<!-- SEO -->
+<title>Tween 82.8 — 夜と夢の間のFMラジオ | ジャンル別BGMプレイヤー</title>
+<meta name="description" content="Tween 82.8は、現実と夢の狭間に流れるFMラジオ。ジャンル別BGMをWindows 95スタイルのUIで楽しむ、懐かしくて新しい音楽体験。無料・広告なし・PWAアプリ対応。">
+<meta name="keywords" content="BGMプレイヤー, FMラジオ, ジャンル別BGM, 勉強用BGM, 作業用BGM, lofi, チルアウト, 懐かしい, レトロ, Windows95, Tween, 82.8MHz, 無料音楽アプリ">
+<meta name="author" content="Tween 82.8">
+<link rel="canonical" href="https://tween828.app/">
+
+<!-- OGP (SNS・AIクローラー向け) -->
+<meta property="og:type"        content="website">
+<meta property="og:site_name"   content="Tween 82.8">
+<meta property="og:title"       content="Tween 82.8 — 夜と夢の間のFMラジオ">
+<meta property="og:description" content="Lofi・Jazz・City Pop・Synthwaveなど44ジャンルのBGMを1時間ミックスで即再生。勉強・作業・眠れない夜のお供に。広告なし・無料・PWA対応。">
+<meta property="og:url"         content="https://tween828.app/">
+<meta property="og:image"       content="https://tween828.app/ogp.png">
+<meta property="og:image:width"  content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt"    content="Tween 82.8 — レトロなWindows95風BGMプレイヤー">
+<meta property="og:locale"      content="ja_JP">
+
+<!-- Twitter Card -->
+<meta name="twitter:card"        content="summary_large_image">
+<meta name="twitter:title"       content="Tween 82.8 — 夜と夢の間のFMラジオ">
+<meta name="twitter:description" content="Lofi・Jazz・City Pop・Synthwaveなど44ジャンルのBGMを1時間ミックスで即再生。勉強・作業・眠れない夜のお供に。広告なし・無料・PWA対応。">
+<meta name="twitter:image"       content="https://tween828.app/ogp.png">
+
+<!-- AIO: 構造化データ (JSON-LD) — AIアシスタントへの明確な文脈提供 -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Tween 82.8",
+  "alternateName": "Tween 82.8 FM Radio",
+  "url": "https://tween828.app/",
+  "applicationCategory": "MusicApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "JPY" },
+  "description": "現実と夢の狭間に流れるFMラジオ。大人になる前に聴いていたあの夜を、ジャンル別BGMで再現するレトロなPWAアプリ。広告なし・無料・インストール不要。",
+  "featureList": [
+    "ジャンル別BGMプレイヤー",
+    "Windows 95スタイルのレトロUI",
+    "PWA対応（ホーム画面に追加可能）",
+    "広告なし・無料",
+    "オフライン対応（Service Worker）"
+  ],
+  "inLanguage": "ja",
+  "author": {
+    "@type": "Organization",
+    "name": "Tween 82.8"
+  }
+}
+</script>
+
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<!-- Desktop icons -->
+<div class="desktop-icons">
+  <div class="desktop-icon" ondblclick="openMyComputer()" data-open="openMyComputer">
+    <div class="icon-img">
+      <!-- My Computer — Win95 32x32 pixel art -->
+      <svg width="32" height="32" viewBox="0 0 32 32" style="image-rendering:pixelated">
+        <!-- モニター外枠 -->
+        <rect x="2" y="1" width="28" height="20" fill="#c0c0c0"/>
+        <rect x="2" y="1" width="28" height="1" fill="#ffffff"/>
+        <rect x="2" y="1" width="1" height="20" fill="#ffffff"/>
+        <rect x="29" y="1" width="1" height="20" fill="#808080"/>
+        <rect x="2" y="20" width="28" height="1" fill="#808080"/>
+        <!-- 画面 -->
+        <rect x="4" y="3" width="24" height="16" fill="#000"/>
+        <rect x="5" y="4" width="22" height="14" fill="#000080"/>
+        <rect x="5" y="4" width="22" height="1" fill="#0000c0"/>
+        <!-- 電源ランプ -->
+        <rect x="27" y="19" width="2" height="1" fill="#00ff00"/>
+        <!-- スタンド -->
+        <rect x="12" y="21" width="8" height="2" fill="#808080"/>
+        <!-- ベース -->
+        <rect x="8" y="23" width="16" height="2" fill="#c0c0c0"/>
+        <rect x="8" y="23" width="16" height="1" fill="#ffffff"/>
+        <rect x="8" y="24" width="16" height="1" fill="#808080"/>
+        <!-- キーボード -->
+        <rect x="4" y="26" width="24" height="4" fill="#c0c0c0"/>
+        <rect x="4" y="26" width="24" height="1" fill="#ffffff"/>
+        <rect x="4" y="29" width="24" height="1" fill="#808080"/>
+        <rect x="6" y="27" width="2" height="1" fill="#ffffff"/>
+        <rect x="9" y="27" width="2" height="1" fill="#ffffff"/>
+        <rect x="12" y="27" width="2" height="1" fill="#ffffff"/>
+        <rect x="15" y="27" width="2" height="1" fill="#ffffff"/>
+        <rect x="18" y="27" width="2" height="1" fill="#ffffff"/>
+        <rect x="21" y="27" width="2" height="1" fill="#ffffff"/>
+        <rect x="24" y="27" width="2" height="1" fill="#ffffff"/>
+      </svg>
+    </div>
+    <div class="icon-label" data-i18n="icon.mycomputer">My Computer</div>
+  </div>
+  <div class="desktop-icon" ondblclick="openMyDocuments()" data-open="openMyDocuments">
+    <div class="icon-img">
+      <!-- My Documents — Win95 folder -->
+      <svg width="32" height="32" viewBox="0 0 32 32" style="image-rendering:pixelated">
+        <!-- タブ -->
+        <rect x="1" y="6" width="12" height="4" fill="#ffcc00"/>
+        <rect x="1" y="6" width="12" height="1" fill="#ffe880"/>
+        <rect x="1" y="6" width="1" height="4" fill="#ffe880"/>
+        <rect x="12" y="6" width="1" height="4" fill="#aa8800"/>
+        <!-- 本体 -->
+        <rect x="1" y="9" width="30" height="20" fill="#ffcc00"/>
+        <rect x="1" y="9" width="30" height="1" fill="#ffe880"/>
+        <rect x="1" y="9" width="1" height="20" fill="#ffe880"/>
+        <rect x="30" y="9" width="1" height="20" fill="#aa8800"/>
+        <rect x="1" y="28" width="30" height="1" fill="#aa8800"/>
+        <!-- ハイライト線 -->
+        <rect x="3" y="11" width="26" height="1" fill="#ffe880" opacity="0.7"/>
+        <rect x="3" y="14" width="26" height="1" fill="#ffe880" opacity="0.4"/>
+      </svg>
+    </div>
+    <div class="icon-label" data-i18n="icon.mydocs">My Documents</div>
+  </div>
+  <div class="desktop-icon" ondblclick="openRecycleBin()" data-open="openRecycleBin">
+    <div class="icon-img">
+      <!-- Recycle Bin — Win95 -->
+      <svg width="32" height="32" viewBox="0 0 32 32" style="image-rendering:pixelated">
+        <!-- フタ -->
+        <rect x="8" y="2" width="16" height="3" fill="#c0c0c0"/>
+        <rect x="8" y="2" width="16" height="1" fill="#ffffff"/>
+        <rect x="8" y="4" width="16" height="1" fill="#808080"/>
+        <!-- 取っ手 -->
+        <rect x="13" y="0" width="6" height="3" fill="#c0c0c0"/>
+        <rect x="13" y="0" width="6" height="1" fill="#ffffff"/>
+        <rect x="13" y="0" width="1" height="3" fill="#ffffff"/>
+        <rect x="18" y="0" width="1" height="3" fill="#808080"/>
+        <!-- 本体 -->
+        <rect x="6" y="5" width="20" height="24" fill="#c0c0c0"/>
+        <rect x="6" y="5" width="1" height="24" fill="#ffffff"/>
+        <rect x="25" y="5" width="1" height="24" fill="#808080"/>
+        <rect x="6" y="28" width="20" height="1" fill="#808080"/>
+        <!-- 縦線（溝） -->
+        <rect x="10" y="8" width="1" height="18" fill="#808080"/>
+        <rect x="11" y="8" width="1" height="18" fill="#ffffff"/>
+        <rect x="15" y="8" width="1" height="18" fill="#808080"/>
+        <rect x="16" y="8" width="1" height="18" fill="#ffffff"/>
+        <rect x="20" y="8" width="1" height="18" fill="#808080"/>
+        <rect x="21" y="8" width="1" height="18" fill="#ffffff"/>
+      </svg>
+    </div>
+    <div class="icon-label" data-i18n="icon.recycle">Recycle Bin</div>
+  </div>
+  <div class="desktop-icon" ondblclick="openTodo()" data-open="openTodo">
+    <div class="icon-img">
+      <!-- Notepad — Win95 clipboard -->
+      <svg width="32" height="32" viewBox="0 0 32 32" style="image-rendering:pixelated">
+        <!-- クリップボード本体 -->
+        <rect x="4" y="4" width="24" height="26" fill="#c0c0c0"/>
+        <rect x="4" y="4" width="24" height="1" fill="#ffffff"/>
+        <rect x="4" y="4" width="1" height="26" fill="#ffffff"/>
+        <rect x="27" y="4" width="1" height="26" fill="#808080"/>
+        <rect x="4" y="29" width="24" height="1" fill="#808080"/>
+        <!-- クリップ -->
+        <rect x="11" y="1" width="10" height="6" fill="#808080"/>
+        <rect x="11" y="1" width="10" height="1" fill="#c0c0c0"/>
+        <rect x="11" y="1" width="1" height="6" fill="#c0c0c0"/>
+        <rect x="13" y="3" width="6" height="2" fill="#c0c0c0"/>
+        <!-- 用紙 -->
+        <rect x="7" y="7" width="18" height="20" fill="#ffffff"/>
+        <rect x="7" y="7" width="18" height="1" fill="#e0e0e0"/>
+        <!-- チェックボックス1 (済) -->
+        <rect x="9" y="10" width="3" height="3" fill="#ffffff" stroke="#808080" stroke-width="1"/>
+        <line x1="10" y1="12" x2="11" y2="13" stroke="#000080" stroke-width="1.5"/>
+        <line x1="11" y1="13" x2="13" y2="10" stroke="#000080" stroke-width="1.5"/>
+        <rect x="14" y="11" width="8" height="1" fill="#000"/>
+        <!-- チェックボックス2 (空) -->
+        <rect x="9" y="16" width="3" height="3" fill="#ffffff" stroke="#808080" stroke-width="1"/>
+        <rect x="14" y="17" width="8" height="1" fill="#000"/>
+        <!-- チェックボックス3 (空) -->
+        <rect x="9" y="22" width="3" height="3" fill="#ffffff" stroke="#808080" stroke-width="1"/>
+        <rect x="14" y="23" width="8" height="1" fill="#000"/>
+      </svg>
+    </div>
+    <div class="icon-label" data-i18n="todo.icon">Notepad</div>
+  </div>
+  <div class="desktop-icon" id="icon-fmwave" ondblclick="openWindow()" data-open="openWindow">
+    <div class="icon-img">
+      <!-- Tween 82.8 — Win95 radio -->
+      <svg width="32" height="32" viewBox="0 0 32 32" style="image-rendering:pixelated">
+        <!-- アンテナ -->
+        <rect x="24" y="0" width="1" height="2" fill="#808080"/>
+        <rect x="23" y="2" width="1" height="2" fill="#808080"/>
+        <rect x="22" y="4" width="1" height="2" fill="#808080"/>
+        <rect x="21" y="6" width="1" height="2" fill="#808080"/>
+        <!-- ラジオ本体 -->
+        <rect x="2" y="7" width="28" height="23" fill="#c0c0c0"/>
+        <rect x="2" y="7" width="28" height="1" fill="#ffffff"/>
+        <rect x="2" y="7" width="1" height="23" fill="#ffffff"/>
+        <rect x="29" y="7" width="1" height="23" fill="#808080"/>
+        <rect x="2" y="29" width="28" height="1" fill="#808080"/>
+        <!-- スピーカーグリル -->
+        <rect x="4" y="10" width="13" height="17" fill="#404040"/>
+        <rect x="5" y="11" width="1" height="15" fill="#606060"/>
+        <rect x="7" y="11" width="1" height="15" fill="#606060"/>
+        <rect x="9" y="11" width="1" height="15" fill="#606060"/>
+        <rect x="11" y="11" width="1" height="15" fill="#606060"/>
+        <rect x="13" y="11" width="1" height="15" fill="#606060"/>
+        <rect x="15" y="11" width="1" height="15" fill="#606060"/>
+        <!-- ディスプレイ -->
+        <rect x="19" y="10" width="10" height="6" fill="#000"/>
+        <rect x="20" y="11" width="8" height="4" fill="#008080"/>
+        <text x="21" y="14" font-size="3" fill="#00ffff" font-family="monospace">82.8</text>
+        <!-- ダイヤル -->
+        <rect x="20" y="19" width="7" height="7" rx="3.5" fill="#c0c0c0" stroke="#808080" stroke-width="1"/>
+        <rect x="23" y="19" width="1" height="3" fill="#404040"/>
+        <!-- LEDランプ -->
+        <rect x="27" y="18" width="2" height="2" fill="#00ff00"/>
+      </svg>
+    </div>
+    <div class="icon-label">Tween 82.8</div>
+  </div>
+  <div class="desktop-icon" ondblclick="openPomodoro()" data-open="openPomodoro">
+    <div class="icon-img">
+      <!-- Pomodoro — Win95 clock/timer -->
+      <svg width="32" height="32" viewBox="0 0 32 32" style="image-rendering:pixelated">
+        <circle cx="16" cy="17" r="13" fill="#c0c0c0" stroke="#808080" stroke-width="1"/>
+        <circle cx="16" cy="17" r="12" fill="#ffffff" stroke="#404040" stroke-width="1"/>
+        <rect x="15" y="6" width="2" height="3" fill="#000"/>
+        <rect x="15" y="25" width="2" height="3" fill="#000"/>
+        <rect x="4" y="16" width="3" height="2" fill="#000"/>
+        <rect x="25" y="16" width="3" height="2" fill="#000"/>
+        <rect x="15" y="11" width="2" height="7" fill="#000"/>
+        <rect x="15" y="17" width="8" height="1" fill="#000"/>
+        <circle cx="16" cy="17" r="1.5" fill="#ff0000"/>
+        <rect x="13" y="1" width="6" height="4" fill="#c0c0c0" stroke="#808080" stroke-width="1"/>
+        <rect x="14" y="2" width="4" height="1" fill="#ffffff"/>
+      </svg>
+    </div>
+    <div class="icon-label" data-i18n="pom.icon">Pomodoro</div>
+  </div>
+  <div class="desktop-icon" ondblclick="openGuestbook()" data-open="openGuestbook">
+    <div class="icon-img">
+      <!-- Guestbook — Win95 notebook/letter -->
+      <svg width="32" height="32" viewBox="0 0 32 32" style="image-rendering:pixelated">
+        <!-- 本体 -->
+        <rect x="3" y="2" width="22" height="28" fill="#ffffcc"/>
+        <rect x="3" y="2" width="22" height="1" fill="#fff"/>
+        <rect x="3" y="2" width="1" height="28" fill="#fff"/>
+        <rect x="24" y="2" width="1" height="28" fill="#aa9944"/>
+        <rect x="3" y="29" width="22" height="1" fill="#aa9944"/>
+        <!-- 罫線 -->
+        <rect x="6" y="7" width="16" height="1" fill="#aac" opacity="0.5"/>
+        <rect x="6" y="11" width="16" height="1" fill="#aac" opacity="0.5"/>
+        <rect x="6" y="15" width="16" height="1" fill="#aac" opacity="0.5"/>
+        <rect x="6" y="19" width="16" height="1" fill="#aac" opacity="0.5"/>
+        <rect x="6" y="23" width="16" height="1" fill="#aac" opacity="0.5"/>
+        <!-- テキスト風の線 -->
+        <rect x="7" y="8" width="12" height="1" fill="#333"/>
+        <rect x="7" y="12" width="10" height="1" fill="#333"/>
+        <rect x="7" y="16" width="14" height="1" fill="#333"/>
+        <rect x="7" y="20" width="8" height="1" fill="#333"/>
+        <!-- ペン -->
+        <rect x="24" y="6" width="2" height="16" fill="#000080"/>
+        <rect x="24" y="4" width="2" height="3" fill="#c0c0c0"/>
+        <rect x="24" y="22" width="2" height="1" fill="#ffcc00"/>
+        <rect x="25" y="23" width="1" height="2" fill="#ffcc00"/>
+      </svg>
+    </div>
+    <div class="icon-label" data-i18n="gb.icon">Guestbook</div>
+  </div>
+  <div class="desktop-icon" ondblclick="openInbox()" data-open="openInbox">
+    <div class="icon-img">
+      <!-- Inbox — Win95 envelope/mail -->
+      <svg width="32" height="32" viewBox="0 0 32 32" style="image-rendering:pixelated">
+        <!-- 封筒本体 -->
+        <rect x="2" y="8" width="28" height="20" fill="#ffffcc"/>
+        <rect x="2" y="8" width="28" height="1" fill="#fff"/>
+        <rect x="2" y="8" width="1" height="20" fill="#fff"/>
+        <rect x="29" y="8" width="1" height="20" fill="#aa8800"/>
+        <rect x="2" y="27" width="28" height="1" fill="#aa8800"/>
+        <!-- フラップ（三角） -->
+        <polygon points="2,8 16,20 30,8" fill="#ffcc00"/>
+        <polygon points="2,8 16,20 30,8" fill="none" stroke="#aa8800" stroke-width="1"/>
+        <!-- 折り目の線 -->
+        <line x1="2" y1="28" x2="14" y2="18" stroke="#aa8800" stroke-width="0.5" opacity="0.5"/>
+        <line x1="30" y1="28" x2="18" y2="18" stroke="#aa8800" stroke-width="0.5" opacity="0.5"/>
+      </svg>
+      <span class="inbox-icon-badge" id="inbox-unread-badge" style="display:none"></span>
+    </div>
+    <div class="icon-label" data-i18n="inbox.icon">Inbox</div>
+  </div>
+  <div class="desktop-icon" ondblclick="openWeather()" data-open="openWeather">
+    <div class="icon-img">
+      <!-- Weather — Win95 sun/cloud -->
+      <svg width="32" height="32" viewBox="0 0 32 32" style="image-rendering:pixelated">
+        <!-- 月 -->
+        <circle cx="20" cy="10" r="7" fill="#ffdd44"/>
+        <circle cx="23" cy="8" r="5" fill="#000080"/>
+        <!-- 星 -->
+        <rect x="6" y="4" width="2" height="2" fill="#ffdd44"/>
+        <rect x="7" y="3" width="1" height="1" fill="#ffdd44"/>
+        <rect x="7" y="6" width="1" height="1" fill="#ffdd44"/>
+        <rect x="5" y="5" width="1" height="1" fill="#ffdd44"/>
+        <rect x="8" y="5" width="1" height="1" fill="#ffdd44"/>
+        <rect x="12" y="7" width="1" height="1" fill="#ffdd44"/>
+        <rect x="4" y="11" width="1" height="1" fill="#ffdd44"/>
+        <!-- 雲 -->
+        <rect x="4" y="18" width="20" height="6" fill="#c0c0c0"/>
+        <rect x="6" y="16" width="8" height="2" fill="#c0c0c0"/>
+        <rect x="16" y="17" width="6" height="1" fill="#c0c0c0"/>
+        <rect x="8" y="15" width="4" height="1" fill="#c0c0c0"/>
+        <!-- 雲のハイライト -->
+        <rect x="4" y="18" width="20" height="1" fill="#fff" opacity="0.5"/>
+        <rect x="6" y="16" width="8" height="1" fill="#fff" opacity="0.5"/>
+        <!-- 雲の影 -->
+        <rect x="4" y="23" width="20" height="1" fill="#808080"/>
+        <rect x="6" y="24" width="16" height="2" fill="#808080" opacity="0.3"/>
+      </svg>
+    </div>
+    <div class="icon-label" data-i18n="weather.icon">Weather</div>
+  </div>
+  <div class="desktop-icon" ondblclick="openIE()" data-open="openIE">
+    <div class="icon-img">
+      <!-- MS-DOS Prompt -->
+      <svg width="32" height="32" viewBox="0 0 16 16" style="image-rendering:pixelated">
+        <rect x="0" y="0" width="16" height="16" fill="#000"/>
+        <rect x="0" y="0" width="16" height="3" fill="#c0c0c0"/>
+        <rect x="0" y="0" width="16" height="1" fill="#fff"/>
+        <rect x="13" y="1" width="2" height="1" fill="#808080"/>
+        <rect x="1" y="3" width="14" height="12" fill="#000"/>
+        <text x="2" y="8" fill="#c0c0c0" font-size="4" font-family="monospace">C:\&gt;_</text>
+      </svg>
+    </div>
+    <div class="icon-label">MS-DOS Prompt</div>
+  </div>
+</div>
+
+<!-- Minminchi (desktop black cat) -->
+<div class="neko" id="neko" title="minminchi">
+  <div class="neko-bubble" id="neko-bubble"></div>
+  <!-- Side view (default) — original black cat -->
+  <svg width="60" height="42" viewBox="0 0 20 14" style="image-rendering:pixelated" id="neko-svg-side" class="neko-sprite">
+    <!-- Head group (stays up during pet) -->
+    <g class="neko-head">
+      <!-- Ear -->
+      <rect x="3" y="0" width="1" height="1" fill="#1a1a1a"/>
+      <rect x="2" y="1" width="2" height="1" fill="#1a1a1a"/>
+      <rect x="3" y="1" width="1" height="1" fill="#ff8899"/>
+      <rect x="5" y="0" width="1" height="1" fill="#1a1a1a"/>
+      <rect x="5" y="1" width="2" height="1" fill="#1a1a1a"/>
+      <rect x="5" y="1" width="1" height="1" fill="#ff8899"/>
+      <!-- Head -->
+      <rect x="1" y="2" width="7" height="5" fill="#1a1a1a"/>
+      <rect x="2" y="2" width="6" height="6" fill="#1a1a1a"/>
+      <!-- Eye -->
+      <g id="neko-eyes">
+        <rect x="2" y="4" width="2" height="2" fill="#ffcc00"/>
+        <rect x="3" y="4" width="1" height="2" fill="#1a1a1a"/>
+      </g>
+      <!-- Squint eyes (hidden, shown during pet) -->
+      <g id="neko-eyes-squint" style="display:none">
+        <rect x="2" y="5" width="2" height="1" fill="#ffcc00"/>
+        <rect x="3" y="5" width="1" height="1" fill="#1a1a1a"/>
+      </g>
+      <!-- Nose -->
+      <rect x="1" y="6" width="1" height="1" fill="#ff8899"/>
+      <!-- Whiskers -->
+      <rect x="0" y="5" width="1" height="1" fill="#555" opacity="0.5"/>
+      <rect x="0" y="7" width="1" height="1" fill="#555" opacity="0.5"/>
+    </g>
+    <!-- Body group (dips during pet) -->
+    <g class="neko-torso">
+      <!-- Body -->
+      <rect x="6" y="5" width="8" height="4" fill="#1a1a1a"/>
+      <rect x="5" y="6" width="10" height="3" fill="#1a1a1a"/>
+      <!-- Belly -->
+      <rect x="7" y="8" width="5" height="1" fill="#333"/>
+    </g>
+    <!-- Legs -->
+    <g class="neko-leg-fl"><rect x="6" y="9" width="2" height="3" fill="#1a1a1a"/><rect x="6" y="11" width="2" height="1" fill="#333"/></g>
+    <g class="neko-leg-fr"><rect x="8" y="9" width="2" height="3" fill="#222"/><rect x="8" y="11" width="2" height="1" fill="#3a3a3a"/></g>
+    <g class="neko-leg-bl"><rect x="11" y="9" width="2" height="3" fill="#222"/><rect x="11" y="11" width="2" height="1" fill="#3a3a3a"/></g>
+    <g class="neko-leg-br"><rect x="13" y="9" width="2" height="3" fill="#1a1a1a"/><rect x="13" y="11" width="2" height="1" fill="#333"/></g>
+    <!-- Tail group (stays up during pet) -->
+    <g id="neko-tail">
+      <rect x="14" y="5" width="1" height="1" fill="#1a1a1a"/>
+      <rect x="15" y="4" width="1" height="2" fill="#1a1a1a"/>
+      <rect x="16" y="3" width="1" height="2" fill="#1a1a1a"/>
+      <rect x="17" y="2" width="1" height="2" fill="#1a1a1a"/>
+      <rect x="18" y="1" width="1" height="2" fill="#1a1a1a"/>
+    </g>
+  </svg>
+  <!-- Food bowl (hidden, shown during feed) -->
+  <div class="neko-bowl" id="neko-bowl">
+    <svg width="27" height="18" viewBox="0 0 9 6" style="image-rendering:pixelated">
+      <!-- Round bowl outer -->
+      <rect x="2" y="0" width="5" height="1" fill="#ddd"/>
+      <rect x="1" y="1" width="1" height="1" fill="#ccc"/>
+      <rect x="7" y="1" width="1" height="1" fill="#ccc"/>
+      <rect x="0" y="2" width="1" height="2" fill="#bbb"/>
+      <rect x="8" y="2" width="1" height="2" fill="#bbb"/>
+      <rect x="1" y="4" width="1" height="1" fill="#aaa"/>
+      <rect x="7" y="4" width="1" height="1" fill="#aaa"/>
+      <rect x="2" y="5" width="5" height="1" fill="#aaa"/>
+      <!-- Bowl inside (dark) -->
+      <rect x="2" y="1" width="5" height="4" fill="#777"/>
+      <!-- Fish inside (hidden until food lands) -->
+      <g class="bowl-food" style="display:none">
+        <!-- Tiny fish in bowl -->
+        <rect x="2" y="2" width="1" height="1" fill="#FA8072"/>
+        <rect x="3" y="1" width="3" height="3" fill="#FA8072"/>
+        <rect x="4" y="2" width="1" height="1" fill="#e06050"/>
+        <rect x="6" y="2" width="1" height="1" fill="#FA8072"/>
+      </g>
+    </svg>
+  </div>
+  <!-- Falling fish (hidden, shown during feed) -->
+  <div class="neko-food-drop" id="neko-food-drop">
+    <svg width="21" height="12" viewBox="0 0 7 4" style="image-rendering:pixelated">
+      <!-- Pixel fish: tail - body - eye -->
+      <rect x="0" y="1" width="1" height="2" fill="#FA8072"/>
+      <rect x="1" y="0" width="1" height="1" fill="#FA8072"/>
+      <rect x="1" y="3" width="1" height="1" fill="#FA8072"/>
+      <rect x="2" y="0" width="3" height="4" fill="#FA8072"/>
+      <rect x="3" y="1" width="1" height="1" fill="#e06050"/>
+      <rect x="5" y="1" width="1" height="2" fill="#FA8072"/>
+      <rect x="6" y="1" width="1" height="1" fill="#333"/>
+    </svg>
+  </div>
+</div>
+
+<!-- Neko right-click context menu -->
+<div class="neko-ctx" id="neko-ctx">
+  <div class="ctx-item" data-action="pet" data-i18n="neko.pet">撫でる</div>
+  <div class="ctx-item" data-action="feed" data-i18n="neko.feed">餌やり</div>
+  <div class="ctx-item" data-action="jump" data-i18n="neko.jump">ジャンプ</div>
+</div>
+
+<!-- ON AIR lamp -->
+<div class="onair-lamp" id="onair-lamp">
+  <div class="onair-light" id="onair-light"></div>
+  <div class="onair-text">ON AIR</div>
+</div>
+
+<!-- FM WAVE Main Window -->
+<div class="win-window" id="win-fmwave">
+
+  <!-- Title bar -->
+  <div class="title-bar" id="title-bar-fmwave">
+    <span class="title-icon"><svg width="10" height="13" viewBox="0 0 5 7" style="image-rendering:pixelated;vertical-align:middle" aria-hidden="true"><rect x="3" y="0" width="1" height="5" fill="currentColor"/><rect x="4" y="0" width="1" height="3" fill="currentColor"/><rect x="1" y="4" width="3" height="2" fill="currentColor"/><rect x="0" y="5" width="3" height="1" fill="currentColor"/></svg></span>
+    <span class="title-text" id="title-text-fmwave">Tween 82.8 — Genre BGM Player</span>
+    <div class="title-grip">
+      <span class="title-grip-dot"></span><span class="title-grip-dot"></span>
+      <span class="title-grip-dot"></span><span class="title-grip-dot"></span>
+      <span class="title-grip-dot"></span><span class="title-grip-dot"></span>
+      <span class="title-grip-dot"></span><span class="title-grip-dot"></span>
+    </div>
+    <div class="title-btns">
+      <button class="title-btn" id="btn-minimize">_</button>
+      <button class="title-btn" id="btn-maximize"><svg width="9" height="9" viewBox="0 0 9 9" style="image-rendering:pixelated;display:block" aria-hidden="true"><rect x="1" y="1" width="7" height="7" fill="none" stroke="currentColor" stroke-width="1"/><rect x="1" y="1" width="7" height="2" fill="currentColor"/></svg></button>
+      <button class="title-btn" id="btn-close"><svg width="7" height="7" viewBox="0 0 7 7" style="image-rendering:pixelated;display:block" aria-hidden="true"><path d="M0.5,0.5 L6.5,6.5 M6.5,0.5 L0.5,6.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/></svg></button>
+    </div>
+  </div>
+
+  <!-- Menu bar -->
+  <div class="menu-bar">
+    <div class="menu-item-wrap">
+      <span class="menu-item" onclick="toggleMenu('menu-file');event.stopPropagation()" data-i18n="menu.file">File</span>
+      <div class="menu-dropdown" id="menu-file">
+        <div class="menu-dropdown-item" onclick="togglePlay();closeMenus()" data-i18n="menu.play">Play / Pause</div>
+        <div class="menu-dropdown-item" onclick="playNext();closeMenus()" data-i18n="menu.next">Next Track</div>
+        <div class="menu-dropdown-item" onclick="playPrev();closeMenus()" data-i18n="menu.prev">Previous Track</div>
+        <div class="menu-dropdown-sep"></div>
+        <div class="menu-dropdown-item" onclick="document.getElementById('btn-close').click();closeMenus()" data-i18n="menu.exit">Exit</div>
+      </div>
+    </div>
+    <div class="menu-item-wrap">
+      <span class="menu-item" onclick="toggleMenu('menu-playback');event.stopPropagation()" data-i18n="menu.playback">Playback</span>
+      <div class="menu-dropdown" id="menu-playback">
+        <div class="menu-dropdown-item" onclick="volUp();closeMenus()" data-i18n="menu.volUp">+ Volume Up</div>
+        <div class="menu-dropdown-item" onclick="volDown();closeMenus()" data-i18n="menu.volDown">- Volume Down</div>
+        <div class="menu-dropdown-sep"></div>
+        <div class="menu-dropdown-item" onclick="playNext();closeMenus()" data-i18n="menu.skip">Skip</div>
+      </div>
+    </div>
+    <div class="menu-item-wrap">
+      <span class="menu-item" onclick="toggleMenu('menu-help');event.stopPropagation()" data-i18n="menu.help">Help</span>
+      <div class="menu-dropdown" id="menu-help">
+        <div class="menu-dropdown-item" onclick="showAbout();closeMenus()" data-i18n="menu.about">About Tween 82.8</div>
+        <div class="menu-dropdown-sep"></div>
+        <div class="menu-dropdown-item disabled" data-i18n="menu.version">Version 1.0</div>
+        <div class="menu-dropdown-sep"></div>
+        <div class="menu-dropdown-item" onclick="switchLang('ja');closeMenus()">🌐 日本語</div>
+        <div class="menu-dropdown-item" onclick="switchLang('en');closeMenus()">🌐 English</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Body -->
+  <div class="win-body">
+
+    <div class="sec-label" id="genre-label" data-i18n="genre.label">Select Genre:</div>
+    <div class="genre-grid" id="genre-grid"></div>
+
+    <!-- Genre listbox — retro list view (expanded mode) -->
+    <div class="genre-listbox-wrap">
+      <div class="genre-listbox-header">
+        <div class="glh-cell glh-swatch"></div>
+        <div class="glh-cell glh-name" data-i18n="genre.colName">Genre Name</div>
+        <div class="glh-cell glh-type" data-i18n="genre.colType">Type</div>
+      </div>
+      <div class="genre-listbox" id="genre-listbox"></div>
+    </div>
+
+    <!-- Now Playing -->
+    <div class="group-box">
+      <span class="group-label" data-i18n="np.groupLabel">Now Playing</span>
+
+      <div class="np-idle" id="np-idle" data-i18n="np.idle">Select a genre to begin playback.</div>
+
+      <div class="np-content" id="np-content">
+        <!-- Top row: thumb + info + digital display -->
+        <div class="np-top">
+          <img class="np-thumb" id="np-thumb" src="" alt="">
+          <div class="np-info">
+            <div class="np-genre-tag" id="np-genre-tag"></div>
+            <div class="np-title" id="np-title"></div>
+            <div class="np-channel" id="np-channel"></div>
+          </div>
+          <!-- Digital time (Winamp-style) -->
+          <div class="digital-display">
+            <div class="dig-station">FM 82.8</div>
+            <div class="dig-time" id="dig-time">0:00</div>
+            <div class="dig-meta">STEREO</div>
+            <div class="dig-meta">128 KBPS</div>
+            <div class="dig-meta">44.1 KHZ</div>
+          </div>
+        </div>
+
+        <!-- Visualizer bars -->
+        <div class="visualizer" id="visualizer">
+          <div class="vis-bar"></div><div class="vis-bar"></div><div class="vis-bar"></div>
+          <div class="vis-bar"></div><div class="vis-bar"></div><div class="vis-bar"></div>
+          <div class="vis-bar"></div><div class="vis-bar"></div><div class="vis-bar"></div>
+          <div class="vis-bar"></div><div class="vis-bar"></div><div class="vis-bar"></div>
+          <div class="vis-bar"></div><div class="vis-bar"></div><div class="vis-bar"></div>
+          <div class="vis-bar"></div><div class="vis-bar"></div><div class="vis-bar"></div>
+          <div class="vis-bar"></div><div class="vis-bar"></div>
+          <div class="vis-bar vis-bar-extra"></div><div class="vis-bar vis-bar-extra"></div><div class="vis-bar vis-bar-extra"></div>
+          <div class="vis-bar vis-bar-extra"></div><div class="vis-bar vis-bar-extra"></div><div class="vis-bar vis-bar-extra"></div>
+          <div class="vis-bar vis-bar-extra"></div><div class="vis-bar vis-bar-extra"></div><div class="vis-bar vis-bar-extra"></div>
+          <div class="vis-bar vis-bar-extra"></div><div class="vis-bar vis-bar-extra"></div><div class="vis-bar vis-bar-extra"></div>
+          <div class="vis-bar vis-bar-extra"></div><div class="vis-bar vis-bar-extra"></div><div class="vis-bar vis-bar-extra"></div>
+          <div class="vis-bar vis-bar-extra"></div><div class="vis-bar vis-bar-extra"></div><div class="vis-bar vis-bar-extra"></div>
+          <div class="vis-bar vis-bar-extra"></div><div class="vis-bar vis-bar-extra"></div>
+          <div class="vis-bar vis-bar-extra"></div><div class="vis-bar vis-bar-extra"></div><div class="vis-bar vis-bar-extra"></div>
+          <div class="vis-bar vis-bar-extra"></div><div class="vis-bar vis-bar-extra"></div><div class="vis-bar vis-bar-extra"></div>
+          <div class="vis-bar vis-bar-extra"></div><div class="vis-bar vis-bar-extra"></div><div class="vis-bar vis-bar-extra"></div>
+          <div class="vis-bar vis-bar-extra"></div><div class="vis-bar vis-bar-extra"></div><div class="vis-bar vis-bar-extra"></div>
+          <div class="vis-bar vis-bar-extra"></div><div class="vis-bar vis-bar-extra"></div><div class="vis-bar vis-bar-extra"></div>
+          <div class="vis-bar vis-bar-extra"></div><div class="vis-bar vis-bar-extra"></div><div class="vis-bar vis-bar-extra"></div>
+          <div class="vis-bar vis-bar-extra"></div><div class="vis-bar vis-bar-extra"></div>
+        </div>
+
+        <!-- Progress -->
+        <div class="progress-wrap">
+          <span class="progress-time" id="prog-cur">0:00</span>
+          <div class="progress-bar" id="prog-bar">
+            <div class="progress-fill" id="prog-fill"></div>
+          </div>
+          <span class="progress-time" id="prog-tot">0:00</span>
+        </div>
+      </div>
+
+      <div class="shuffle-info" id="shuffle-info">
+        <span class="shuffle-dot"></span>
+        <span id="shuffle-txt">Shuffle: 0 / 0</span>
+      </div>
+    </div>
+
+    <!-- Controls -->
+    <div class="controls">
+      <button class="ctrl-btn" onclick="playPrev()" data-tip="Previous (←)"><svg width="14" height="12" viewBox="0 0 7 6" style="image-rendering:pixelated;display:block" aria-hidden="true"><rect x="0" y="0" width="2" height="6" fill="currentColor"/><polygon points="7,0 3,3 7,6" fill="currentColor"/></svg></button>
+      <button class="ctrl-btn" id="btn-play" onclick="togglePlay()" data-tip="Play / Pause (Space)"><svg width="10" height="12" viewBox="0 0 5 6" style="image-rendering:pixelated;display:block" aria-hidden="true"><polygon points="0,0 5,3 0,6" fill="currentColor"/></svg></button>
+      <button class="ctrl-btn" onclick="playNext()" data-tip="Next (→)"><svg width="14" height="12" viewBox="0 0 7 6" style="image-rendering:pixelated;display:block" aria-hidden="true"><polygon points="0,0 4,3 0,6" fill="currentColor"/><rect x="5" y="0" width="2" height="6" fill="currentColor"/></svg></button>
+    </div>
+
+    <!-- Volume -->
+    <div class="vol-wrap">
+      <span class="vol-label" data-i18n="vol.label">Volume:</span>
+      <input type="range" id="vol-slider" min="0" max="100" value="80" oninput="setVol(this.value)">
+      <span class="vol-val" id="vol-val">80</span>
+    </div>
+
+    <div class="kb-hint" data-i18n="kb.hint">Space: play/pause  ·  ← →: prev / next</div>
+  </div>
+
+  <!-- Status bar -->
+  <div class="status-bar">
+    <div class="status-panel flex1" id="status-bar">Ready</div><!-- status-bar updated via setStatus / applyLang -->
+    <div class="status-panel fixed" id="status-track"></div>
+    <div class="status-panel fixed brand">Tween 82.8</div>
+  </div>
+
+  <!-- Resize handles -->
+  <div class="resize-handle" data-dir="n"></div>
+  <div class="resize-handle" data-dir="ne"></div>
+  <div class="resize-handle" data-dir="e"></div>
+  <div class="resize-handle" data-dir="se"></div>
+  <div class="resize-handle" data-dir="s"></div>
+  <div class="resize-handle" data-dir="sw"></div>
+  <div class="resize-handle" data-dir="w"></div>
+  <div class="resize-handle" data-dir="nw"></div>
+
+</div>
+
+<!-- My Computer Window → Tween 82.8 About -->
+<div class="win-window extra-window" id="win-mycomputer">
+  <div class="title-bar" id="title-bar-mycomputer">
+    <span class="title-icon"><svg width="10" height="13" viewBox="0 0 5 7" style="image-rendering:pixelated;vertical-align:middle" aria-hidden="true"><rect x="3" y="0" width="1" height="5" fill="currentColor"/><rect x="4" y="0" width="1" height="3" fill="currentColor"/><rect x="1" y="4" width="3" height="2" fill="currentColor"/><rect x="0" y="5" width="3" height="1" fill="currentColor"/></svg></span>
+    <span class="title-text" data-i18n="icon.mycomputer">My Computer</span>
+    <div class="title-btns">
+      <button class="title-btn" onclick="document.getElementById('win-mycomputer').style.removeProperty('display')"><svg width="7" height="7" viewBox="0 0 7 7" style="image-rendering:pixelated;display:block" aria-hidden="true"><path d="M0.5,0.5 L6.5,6.5 M6.5,0.5 L0.5,6.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/></svg></button>
+    </div>
+  </div>
+  <div class="menu-bar">
+    <span class="menu-item">File</span>
+    <span class="menu-item">Edit</span>
+    <span class="menu-item">View</span>
+    <span class="menu-item">Help</span>
+  </div>
+  <div class="win-body">
+    <div class="icon-grid" id="mycomputer-drives">
+      <!-- (A:) Floppy -->
+      <div class="file-icon">
+        <div class="icon-img">
+          <svg width="26" height="28" viewBox="0 0 13 14" style="image-rendering:pixelated">
+            <rect x="1" y="0" width="11" height="14" fill="#404040"/>
+            <rect x="1" y="0" width="11" height="1" fill="#606060"/>
+            <rect x="1" y="0" width="1" height="14" fill="#606060"/>
+            <rect x="3" y="1" width="7" height="4" fill="#c0c0c0"/>
+            <rect x="7" y="1" width="2" height="3" fill="#808080"/>
+            <rect x="3" y="8" width="7" height="5" fill="#808080"/>
+            <rect x="4" y="9" width="5" height="3" fill="#c0c0c0"/>
+          </svg>
+        </div>
+        <div class="icon-label-dark">3.5 (A:)</div>
+      </div>
+      <!-- (C:) Hard Drive -->
+      <div class="file-icon clickable" onclick="openDriveC()" ontouchend="openDriveC();event.preventDefault()">
+        <div class="icon-img">
+          <svg width="28" height="24" viewBox="0 0 14 12" style="image-rendering:pixelated">
+            <rect x="0" y="2" width="14" height="8" fill="#c0c0c0"/>
+            <rect x="0" y="2" width="14" height="1" fill="#fff"/>
+            <rect x="0" y="2" width="1" height="8" fill="#fff"/>
+            <rect x="13" y="2" width="1" height="8" fill="#808080"/>
+            <rect x="0" y="9" width="14" height="1" fill="#808080"/>
+            <rect x="2" y="5" width="8" height="1" fill="#808080"/>
+            <rect x="11" y="4" width="2" height="3" fill="#00aa00"/>
+          </svg>
+        </div>
+        <div class="icon-label-dark">(C:)</div>
+      </div>
+      <!-- (D:) CD-ROM -->
+      <div class="file-icon">
+        <div class="icon-img">
+          <svg width="28" height="28" viewBox="0 0 14 14" style="image-rendering:pixelated">
+            <circle cx="7" cy="7" r="6" fill="#c0c0c0" stroke="#808080" stroke-width="1"/>
+            <circle cx="7" cy="7" r="4" fill="#e0e0e0"/>
+            <circle cx="7" cy="7" r="1.5" fill="#808080"/>
+            <circle cx="7" cy="7" r="0.5" fill="#404040"/>
+          </svg>
+        </div>
+        <div class="icon-label-dark">(D:) CD-ROM</div>
+      </div>
+      <!-- Control Panel -->
+      <div class="file-icon clickable" onclick="openControlPanel()" ontouchend="openControlPanel();event.preventDefault()">
+        <div class="icon-img">
+          <svg width="26" height="26" viewBox="0 0 13 13" style="image-rendering:pixelated">
+            <rect x="0" y="0" width="13" height="13" fill="#c0c0c0"/>
+            <rect x="0" y="0" width="13" height="1" fill="#fff"/>
+            <rect x="0" y="0" width="1" height="13" fill="#fff"/>
+            <rect x="12" y="0" width="1" height="13" fill="#808080"/>
+            <rect x="0" y="12" width="13" height="1" fill="#808080"/>
+            <rect x="3" y="3" width="3" height="3" fill="#000080"/>
+            <rect x="8" y="3" width="3" height="3" fill="#008080"/>
+            <rect x="3" y="8" width="3" height="3" fill="#808000"/>
+            <rect x="8" y="8" width="3" height="3" fill="#800000"/>
+          </svg>
+        </div>
+        <div class="icon-label-dark">Control Panel</div>
+      </div>
+    </div>
+    <!-- C: drive contents (hidden, shown when clicking C:) -->
+    <div class="icon-grid" id="mycomputer-c-drive" style="display:none">
+      <div class="file-icon clickable" onclick="openFile('README.txt', readmeContent)" ontouchend="openFile('README.txt', readmeContent);event.preventDefault()">
+        <div class="icon-img">
+          <svg width="26" height="30" viewBox="0 0 13 15" style="image-rendering:pixelated">
+            <rect x="0" y="0" width="10" height="15" fill="#ffffff" stroke="#808080" stroke-width="1"/>
+            <polygon points="10,0 13,3 10,3" fill="#c0c0c0" stroke="#808080" stroke-width="0.8"/>
+            <rect x="10" y="3" width="3" height="12" fill="#ffffff" stroke="#808080" stroke-width="1"/>
+            <rect x="2" y="4" width="6" height="1" fill="#000080"/>
+            <rect x="2" y="6" width="8" height="1" fill="#808080"/>
+            <rect x="2" y="8" width="7" height="1" fill="#808080"/>
+            <rect x="2" y="10" width="5" height="1" fill="#808080"/>
+          </svg>
+        </div>
+        <div class="icon-label-dark">README.txt</div>
+      </div>
+      <div class="file-icon clickable" onclick="openWindow()" ontouchend="openWindow();event.preventDefault()">
+        <div class="icon-img">
+          <svg width="26" height="30" viewBox="0 0 13 15" style="image-rendering:pixelated">
+            <rect x="0" y="0" width="10" height="15" fill="#fffff0" stroke="#808080" stroke-width="1"/>
+            <polygon points="10,0 13,3 10,3" fill="#e0e0d0" stroke="#808080" stroke-width="0.8"/>
+            <rect x="10" y="3" width="3" height="12" fill="#fffff0" stroke="#808080" stroke-width="1"/>
+            <rect x="3" y="5" width="1" height="6" fill="#000080"/>
+            <rect x="5" y="5" width="1" height="6" fill="#000080"/>
+            <rect x="5" y="5" width="3" height="1" fill="#000080"/>
+            <rect x="5" y="8" width="2" height="1" fill="#000080"/>
+          </svg>
+        </div>
+        <div class="icon-label-dark">tween828.exe</div>
+      </div>
+      <div class="file-icon clickable" onclick="openFile('signal_log.txt', signalLogContent)" ontouchend="openFile('signal_log.txt', signalLogContent);event.preventDefault()">
+        <div class="icon-img">
+          <svg width="26" height="30" viewBox="0 0 13 15" style="image-rendering:pixelated">
+            <rect x="0" y="0" width="10" height="15" fill="#ffffff" stroke="#808080" stroke-width="1"/>
+            <polygon points="10,0 13,3 10,3" fill="#c0c0c0" stroke="#808080" stroke-width="0.8"/>
+            <rect x="10" y="3" width="3" height="12" fill="#ffffff" stroke="#808080" stroke-width="1"/>
+            <rect x="2" y="4" width="6" height="1" fill="#000080"/>
+            <rect x="2" y="6" width="8" height="1" fill="#808080"/>
+            <rect x="2" y="8" width="7" height="1" fill="#808080"/>
+            <rect x="2" y="10" width="5" height="1" fill="#808080"/>
+          </svg>
+        </div>
+        <div class="icon-label-dark">signal_log.txt</div>
+      </div>
+    </div>
+  </div>
+  <div class="status-bar">
+    <div class="status-panel flex1" id="mycomputer-status">4 object(s)</div>
+  </div>
+</div>
+
+<!-- My Documents Window -->
+<div class="win-window extra-window" id="win-mydocuments" style="display:none">
+  <div class="title-bar" id="title-bar-mydocuments">
+    <span class="title-icon title-icon-lg">
+      <svg width="14" height="13" viewBox="0 0 15 13" style="vertical-align:middle;image-rendering:pixelated">
+        <rect x="0" y="3" width="6" height="2" fill="#FFCC00" stroke="#AA8800" stroke-width="0.8"/>
+        <rect x="0" y="4" width="15" height="9" fill="#FFCC00" stroke="#AA8800" stroke-width="0.8"/>
+        <rect x="1" y="6" width="13" height="1" fill="#FFE566" opacity="0.6"/>
+      </svg>
+    </span>
+    <span class="title-text" data-i18n="win.mydocs.title">My Documents</span>
+    <div class="title-btns">
+      <button class="title-btn" onclick="document.getElementById('win-mydocuments').style.removeProperty('display')"><svg width="7" height="7" viewBox="0 0 7 7" style="image-rendering:pixelated;display:block" aria-hidden="true"><path d="M0.5,0.5 L6.5,6.5 M6.5,0.5 L0.5,6.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/></svg></button>
+    </div>
+  </div>
+  <div class="menu-bar">
+    <span class="menu-item">File</span>
+    <span class="menu-item">Edit</span>
+    <span class="menu-item">View</span>
+    <span class="menu-item">Help</span>
+  </div>
+  <div class="win-body">
+    <div class="icon-grid">
+
+      <div class="file-icon clickable" onclick="openFile('3am_drive.txt','深夜3時。誰もいない道を走りながら、\nラジオを 82.8 にチューニングした。\n\nあの曲の名前は、今でも知らない。\nでも、メロディーは体が覚えている。\n\n窓から入ってくる夜風と、\n遠くの街の灯りと、\nその曲だけがあった。')" ontouchend="openFile('3am_drive.txt','深夜3時。誰もいない道を走りながら、\nラジオを 82.8 にチューニングした。\n\nあの曲の名前は、今でも知らない。\nでも、メロディーは体が覚えている。\n\n窓から入ってくる夜風と、\n遠くの街の灯りと、\nその曲だけがあった。');event.preventDefault()">
+        <div class="icon-img">
+          <svg width="26" height="30" viewBox="0 0 13 15" style="image-rendering:pixelated">
+            <rect x="0" y="0" width="10" height="15" fill="#ffffff" stroke="#808080" stroke-width="1"/>
+            <polygon points="10,0 13,3 10,3" fill="#c0c0c0" stroke="#808080" stroke-width="0.8"/>
+            <rect x="10" y="3" width="3" height="12" fill="#ffffff" stroke="#808080" stroke-width="1"/>
+            <rect x="2" y="4" width="6" height="1" fill="#000080"/>
+            <rect x="2" y="6" width="8" height="1" fill="#808080"/>
+            <rect x="2" y="8" width="7" height="1" fill="#808080"/>
+            <rect x="2" y="10" width="5" height="1" fill="#808080"/>
+          </svg>
+        </div>
+        <div class="icon-label-dark">3am_drive.txt</div>
+      </div>
+
+      <div class="file-icon clickable" onclick="openFile('summer_1999.txt','夏の終わり。\n窓から聴こえてきた曲が、世界を変えた気がした。\n\n大人になる、ということが\n少しだけわかった夏。\n\nあれが最後の夏だった。\n\n— 1999.08')" ontouchend="openFile('summer_1999.txt','夏の終わり。\n窓から聴こえてきた曲が、世界を変えた気がした。\n\n大人になる、ということが\n少しだけわかった夏。\n\nあれが最後の夏だった。\n\n— 1999.08');event.preventDefault()">
+        <div class="icon-img">
+          <svg width="26" height="30" viewBox="0 0 13 15" style="image-rendering:pixelated">
+            <rect x="0" y="0" width="10" height="15" fill="#ffffff" stroke="#808080" stroke-width="1"/>
+            <polygon points="10,0 13,3 10,3" fill="#c0c0c0" stroke="#808080" stroke-width="0.8"/>
+            <rect x="10" y="3" width="3" height="12" fill="#ffffff" stroke="#808080" stroke-width="1"/>
+            <rect x="2" y="4" width="6" height="1" fill="#000080"/>
+            <rect x="2" y="6" width="8" height="1" fill="#808080"/>
+            <rect x="2" y="8" width="7" height="1" fill="#808080"/>
+            <rect x="2" y="10" width="5" height="1" fill="#808080"/>
+          </svg>
+        </div>
+        <div class="icon-label-dark">summer_1999.txt</div>
+      </div>
+
+      <div class="file-icon clickable" onclick="openFile('frequency_log.txt','[受信ログ]\n\n周波数  : 82.8 MHz\n受信時刻: 03:17\n天候    : 晴れ / 星が見えた\n\nノイズの中に、夢があった。\nチューナーを合わせ続けた夜。\n\n今夜も、誰かが同じ周波数で\n聴いているかもしれない。')" ontouchend="openFile('frequency_log.txt','[受信ログ]\n\n周波数  : 82.8 MHz\n受信時刻: 03:17\n天候    : 晴れ / 星が見えた\n\nノイズの中に、夢があった。\nチューナーを合わせ続けた夜。\n\n今夜も、誰かが同じ周波数で\n聴いているかもしれない。');event.preventDefault()">
+        <div class="icon-img">
+          <svg width="26" height="30" viewBox="0 0 13 15" style="image-rendering:pixelated">
+            <rect x="0" y="0" width="10" height="15" fill="#ffffff" stroke="#808080" stroke-width="1"/>
+            <polygon points="10,0 13,3 10,3" fill="#c0c0c0" stroke="#808080" stroke-width="0.8"/>
+            <rect x="10" y="3" width="3" height="12" fill="#ffffff" stroke="#808080" stroke-width="1"/>
+            <rect x="2" y="4" width="6" height="1" fill="#000080"/>
+            <rect x="2" y="6" width="8" height="1" fill="#808080"/>
+            <rect x="2" y="8" width="7" height="1" fill="#808080"/>
+            <rect x="2" y="10" width="5" height="1" fill="#808080"/>
+          </svg>
+        </div>
+        <div class="icon-label-dark">frequency_log.txt</div>
+      </div>
+
+      <div class="file-icon clickable" onclick="openFile('last_night.txt','昨夜も眠れなかった。\nラジオをつけた。\n\n82.8。\nそれだけで、少し楽になった。\n\nいつかこの夜も\n懐かしくなるのだろうか。')" ontouchend="openFile('last_night.txt','昨夜も眠れなかった。\nラジオをつけた。\n\n82.8。\nそれだけで、少し楽になった。\n\nいつかこの夜も\n懐かしくなるのだろうか。');event.preventDefault()">
+        <div class="icon-img">
+          <svg width="26" height="30" viewBox="0 0 13 15" style="image-rendering:pixelated">
+            <rect x="0" y="0" width="10" height="15" fill="#ffffff" stroke="#808080" stroke-width="1"/>
+            <polygon points="10,0 13,3 10,3" fill="#c0c0c0" stroke="#808080" stroke-width="0.8"/>
+            <rect x="10" y="3" width="3" height="12" fill="#ffffff" stroke="#808080" stroke-width="1"/>
+            <rect x="2" y="4" width="6" height="1" fill="#000080"/>
+            <rect x="2" y="6" width="8" height="1" fill="#808080"/>
+            <rect x="2" y="8" width="7" height="1" fill="#808080"/>
+            <rect x="2" y="10" width="5" height="1" fill="#808080"/>
+          </svg>
+        </div>
+        <div class="icon-label-dark">last_night.txt</div>
+      </div>
+
+      <div class="file-icon clickable" onclick="openFile('swordfish_II.log','[航行ログ — Swordfish II]\n\n日時  : 不明\n座標  : 火星軌道付近\n速度  : 亜光速巡航\n\n目的地なし。\n燃料はまだある。\n\n「俺はただ目が覚めてるだけだ。\n 夢を見てるのはそっちだろう。」\n\n── 通信途絶。')" ontouchend="openFile('swordfish_II.log','[航行ログ — Swordfish II]\n\n日時  : 不明\n座標  : 火星軌道付近\n速度  : 亜光速巡航\n\n目的地なし。\n燃料はまだある。\n\n「俺はただ目が覚めてるだけだ。\n 夢を見てるのはそっちだろう。」\n\n── 通信途絶。');event.preventDefault()">
+        <div class="icon-img">
+          <svg width="26" height="30" viewBox="0 0 13 15" style="image-rendering:pixelated">
+            <rect x="0" y="0" width="10" height="15" fill="#ffffff" stroke="#808080" stroke-width="1"/>
+            <polygon points="10,0 13,3 10,3" fill="#c0c0c0" stroke="#808080" stroke-width="0.8"/>
+            <rect x="10" y="3" width="3" height="12" fill="#ffffff" stroke="#808080" stroke-width="1"/>
+            <rect x="2" y="4" width="6" height="1" fill="#000080"/>
+            <rect x="2" y="6" width="8" height="1" fill="#808080"/>
+            <rect x="2" y="8" width="7" height="1" fill="#808080"/>
+            <rect x="2" y="10" width="5" height="1" fill="#808080"/>
+          </svg>
+        </div>
+        <div class="icon-label-dark">swordfish_II.log</div>
+      </div>
+
+      <div class="file-icon clickable" onclick="openFile('modal_soul.pls','[playlist]\nNumberOfEntries=6\n\nFile1=reflection_eternal\nFile2=feather\nFile3=luv_sic_pt3\nFile4=aruarian_dance\nFile5=blessing_it\nFile6=modal_soul\n\n; 再生回数: ∞\n; 最終再生: 深夜、いつも深夜')" ontouchend="openFile('modal_soul.pls','[playlist]\nNumberOfEntries=6\n\nFile1=reflection_eternal\nFile2=feather\nFile3=luv_sic_pt3\nFile4=aruarian_dance\nFile5=blessing_it\nFile6=modal_soul\n\n; 再生回数: ∞\n; 最終再生: 深夜、いつも深夜');event.preventDefault()">
+        <div class="icon-img">
+          <!-- Music playlist doc -->
+          <svg width="26" height="30" viewBox="0 0 13 15" style="image-rendering:pixelated">
+            <rect x="0" y="0" width="10" height="15" fill="#fffff0" stroke="#808080" stroke-width="1"/>
+            <polygon points="10,0 13,3 10,3" fill="#ffeeaa" stroke="#808080" stroke-width="0.8"/>
+            <rect x="10" y="3" width="3" height="12" fill="#fffff0" stroke="#808080" stroke-width="1"/>
+            <rect x="5" y="4" width="1" height="4" fill="#000080"/>
+            <rect x="6" y="4" width="2" height="1" fill="#000080"/>
+            <rect x="3" y="7" width="2" height="2" fill="#000080"/>
+          </svg>
+        </div>
+        <div class="icon-label-dark">modal_soul.pls</div>
+      </div>
+
+      <div class="file-icon clickable" onclick="openFile('section9.bat','@echo off\necho ──────────────────────\necho  PUBLIC SECURITY SEC.9\necho ──────────────────────\necho.\necho STATUS  : 待機中\necho MEMBERS : 9\necho NET     : 全員接続済\necho.\necho 「ネットは広大だわ」\necho.\npause')" ontouchend="openFile('section9.bat','@echo off\necho ──────────────────────\necho  PUBLIC SECURITY SEC.9\necho ──────────────────────\necho.\necho STATUS  : 待機中\necho MEMBERS : 9\necho NET     : 全員接続済\necho.\necho 「ネットは広大だわ」\necho.\npause');event.preventDefault()">
+        <div class="icon-img">
+          <svg width="26" height="30" viewBox="0 0 13 15" style="image-rendering:pixelated">
+            <rect x="0" y="0" width="10" height="15" fill="#ffffff" stroke="#808080" stroke-width="1"/>
+            <polygon points="10,0 13,3 10,3" fill="#c0c0c0" stroke="#808080" stroke-width="0.8"/>
+            <rect x="10" y="3" width="3" height="12" fill="#ffffff" stroke="#808080" stroke-width="1"/>
+            <rect x="2" y="4" width="2" height="4" fill="#000"/>
+            <rect x="4" y="4" width="4" height="1" fill="#000"/>
+            <rect x="4" y="6" width="3" height="1" fill="#000"/>
+            <rect x="4" y="8" width="4" height="1" fill="#000"/>
+          </svg>
+        </div>
+        <div class="icon-label-dark">section9.bat</div>
+      </div>
+
+      <div class="file-icon clickable" onclick="openFile('champloo.mix','[MIX LOG]\n\nTrack 01: 道なき道を行け\nTrack 02: 侍と嘻哈の間\nTrack 03: 向日葵を探して\nTrack 04: 言葉にならない夜\nTrack 05: 別れの茶屋\n\nBPM: 不定\nGENRE: 全部混ぜた\n\n── 旅はまだ終わってない。')" ontouchend="openFile('champloo.mix','[MIX LOG]\n\nTrack 01: 道なき道を行け\nTrack 02: 侍と嘻哈の間\nTrack 03: 向日葵を探して\nTrack 04: 言葉にならない夜\nTrack 05: 別れの茶屋\n\nBPM: 不定\nGENRE: 全部混ぜた\n\n── 旅はまだ終わってない。');event.preventDefault()">
+        <div class="icon-img">
+          <svg width="26" height="30" viewBox="0 0 13 15" style="image-rendering:pixelated">
+            <rect x="0" y="0" width="10" height="15" fill="#fffff0" stroke="#808080" stroke-width="1"/>
+            <polygon points="10,0 13,3 10,3" fill="#ffeeaa" stroke="#808080" stroke-width="0.8"/>
+            <rect x="10" y="3" width="3" height="12" fill="#fffff0" stroke="#808080" stroke-width="1"/>
+            <rect x="5" y="4" width="1" height="4" fill="#000080"/>
+            <rect x="6" y="4" width="2" height="1" fill="#000080"/>
+            <rect x="3" y="7" width="2" height="2" fill="#000080"/>
+          </svg>
+        </div>
+        <div class="icon-label-dark">champloo.mix</div>
+      </div>
+
+      <div class="file-icon clickable" onclick="openFile('playlist.m3u','#EXTM3U\n\n#EXTINF:-1,深夜の散歩\n#EXTINF:-1,窓の外の雨\n#EXTINF:-1,誰かの部屋の光\n#EXTINF:-1,夜明け前の沈黙\n#EXTINF:-1,帰り道\n#EXTINF:-1,あの夏の 82.8\n#EXTINF:-1,眠れない夜に\n#EXTINF:-1,朝が来る前に')" ontouchend="openFile('playlist.m3u','#EXTM3U\n\n#EXTINF:-1,深夜の散歩\n#EXTINF:-1,窓の外の雨\n#EXTINF:-1,誰かの部屋の光\n#EXTINF:-1,夜明け前の沈黙\n#EXTINF:-1,帰り道\n#EXTINF:-1,あの夏の 82.8\n#EXTINF:-1,眠れない夜に\n#EXTINF:-1,朝が来る前に');event.preventDefault()">
+        <div class="icon-img">
+          <!-- Music note doc -->
+          <svg width="26" height="30" viewBox="0 0 13 15" style="image-rendering:pixelated">
+            <rect x="0" y="0" width="10" height="15" fill="#fffff0" stroke="#808080" stroke-width="1"/>
+            <polygon points="10,0 13,3 10,3" fill="#ffeeaa" stroke="#808080" stroke-width="0.8"/>
+            <rect x="10" y="3" width="3" height="12" fill="#fffff0" stroke="#808080" stroke-width="1"/>
+            <rect x="5" y="4" width="1" height="4" fill="#000080"/>
+            <rect x="6" y="4" width="2" height="1" fill="#000080"/>
+            <rect x="3" y="7" width="2" height="2" fill="#000080"/>
+          </svg>
+        </div>
+        <div class="icon-label-dark">playlist.m3u</div>
+      </div>
+
+    </div>
+  </div>
+  <div class="status-bar">
+    <div class="status-panel flex1" data-i18n="win.mydocs.status">9 object(s)</div>
+  </div>
+</div>
+
+<!-- Recycle Bin Window -->
+<div class="win-window extra-window" id="win-recyclebin">
+  <div class="title-bar" id="title-bar-recyclebin">
+    <span class="title-icon title-icon-lg">
+      <svg width="12" height="14" viewBox="0 0 12 14" style="vertical-align:middle;image-rendering:pixelated">
+        <rect x="0" y="1" width="12" height="2" fill="#c0c0c0" stroke="#808080" stroke-width="0.5"/>
+        <rect x="4" y="0" width="4" height="2" fill="#c0c0c0" stroke="#808080" stroke-width="0.5"/>
+        <path d="M1 3.5 L2 13 L10 13 L11 3.5 Z" fill="#c0c0c0" stroke="#808080" stroke-width="0.5"/>
+        <line x1="4.5" y1="5" x2="4.5" y2="11" stroke="#808080" stroke-width="1"/>
+        <line x1="6" y1="5" x2="6" y2="11" stroke="#808080" stroke-width="1"/>
+        <line x1="7.5" y1="5" x2="7.5" y2="11" stroke="#808080" stroke-width="1"/>
+      </svg>
+    </span>
+    <span class="title-text" data-i18n="win.recycle.title">Recycle Bin</span>
+    <div class="title-btns">
+      <button class="title-btn" onclick="document.getElementById('win-recyclebin').style.removeProperty('display')"><svg width="7" height="7" viewBox="0 0 7 7" style="image-rendering:pixelated;display:block" aria-hidden="true"><path d="M0.5,0.5 L6.5,6.5 M6.5,0.5 L0.5,6.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/></svg></button>
+    </div>
+  </div>
+  <div class="menu-bar">
+    <span class="menu-item">File</span>
+    <span class="menu-item">Edit</span>
+    <span class="menu-item">View</span>
+    <span class="menu-item">Help</span>
+  </div>
+  <div class="win-body">
+    <div class="icon-grid">
+
+      <div class="file-icon clickable" onclick="openFile('youth.exe','エラー: このファイルは削除できません。\n実行中のプロセスが使用しています。\n\n  [再試行]  [キャンセル]\n\n─────────────────────\n削除を試みた回数: 数えきれない')" ontouchend="openFile('youth.exe','エラー: このファイルは削除できません。\n実行中のプロセスが使用しています。\n\n  [再試行]  [キャンセル]\n\n─────────────────────\n削除を試みた回数: 数えきれない');event.preventDefault()">
+        <div class="icon-img">
+          <svg width="26" height="30" viewBox="0 0 13 15" style="image-rendering:pixelated">
+            <rect x="0" y="0" width="10" height="15" fill="#e8e8e8" stroke="#808080" stroke-width="1"/>
+            <polygon points="10,0 13,3 10,3" fill="#c0c0c0" stroke="#808080" stroke-width="0.8"/>
+            <rect x="10" y="3" width="3" height="12" fill="#e8e8e8" stroke="#808080" stroke-width="1"/>
+            <line x1="2" y1="4" x2="8" y2="10" stroke="#808080" stroke-width="1"/>
+            <line x1="2" y1="10" x2="8" y2="4" stroke="#808080" stroke-width="1"/>
+          </svg>
+        </div>
+        <div class="icon-label-dark">youth.exe</div>
+      </div>
+
+      <div class="file-icon clickable" onclick="openFile('あの夏.mp3','ファイル情報:\n  名前  : あの夏.mp3\n  状態  : 破損\n  サイズ: 思い出せないほど大きい\n\nエラー: ファイルは再生できません。\n\nでも、メロディーは\nまだ頭の中で流れている。')" ontouchend="openFile('あの夏.mp3','ファイル情報:\n  名前  : あの夏.mp3\n  状態  : 破損\n  サイズ: 思い出せないほど大きい\n\nエラー: ファイルは再生できません。\n\nでも、メロディーは\nまだ頭の中で流れている。');event.preventDefault()">
+        <div class="icon-img">
+          <svg width="26" height="30" viewBox="0 0 13 15" style="image-rendering:pixelated">
+            <rect x="0" y="0" width="10" height="15" fill="#e8e8e8" stroke="#808080" stroke-width="1"/>
+            <polygon points="10,0 13,3 10,3" fill="#c0c0c0" stroke="#808080" stroke-width="0.8"/>
+            <rect x="10" y="3" width="3" height="12" fill="#e8e8e8" stroke="#808080" stroke-width="1"/>
+            <line x1="2" y1="4" x2="8" y2="10" stroke="#808080" stroke-width="1"/>
+            <line x1="2" y1="10" x2="8" y2="4" stroke="#808080" stroke-width="1"/>
+          </svg>
+        </div>
+        <div class="icon-label-dark">あの夏.mp3</div>
+      </div>
+
+      <div class="file-icon clickable" onclick="openFile('夢の続き.txt','ここに続きを書こうとしたが、\n言葉が見つからなかった。\n\n\n\n\n\n\n\n...(空白が続いている)')" ontouchend="openFile('夢の続き.txt','ここに続きを書こうとしたが、\n言葉が見つからなかった。\n\n\n\n\n\n\n\n...(空白が続いている)');event.preventDefault()">
+        <div class="icon-img">
+          <svg width="26" height="30" viewBox="0 0 13 15" style="image-rendering:pixelated">
+            <rect x="0" y="0" width="10" height="15" fill="#e8e8e8" stroke="#808080" stroke-width="1"/>
+            <polygon points="10,0 13,3 10,3" fill="#c0c0c0" stroke="#808080" stroke-width="0.8"/>
+            <rect x="10" y="3" width="3" height="12" fill="#e8e8e8" stroke="#808080" stroke-width="1"/>
+            <line x1="2" y1="4" x2="8" y2="10" stroke="#808080" stroke-width="1"/>
+            <line x1="2" y1="10" x2="8" y2="4" stroke="#808080" stroke-width="1"/>
+          </svg>
+        </div>
+        <div class="icon-label-dark">夢の続き.txt</div>
+      </div>
+
+      <div class="file-icon clickable" onclick="openFile('luv_sic.tmp','一時ファイル: luv_sic.tmp\n状態: 削除済\n作成日: 2010-02-26\n\nこのファイルは一時的なものでした。\nでも、一時的じゃなかった。\n\n再生しようとしましたが、\nアーティストが見つかりません。\n\n── rest in beats.')" ontouchend="openFile('luv_sic.tmp','一時ファイル: luv_sic.tmp\n状態: 削除済\n作成日: 2010-02-26\n\nこのファイルは一時的なものでした。\nでも、一時的じゃなかった。\n\n再生しようとしましたが、\nアーティストが見つかりません。\n\n── rest in beats.');event.preventDefault()">
+        <div class="icon-img">
+          <svg width="26" height="30" viewBox="0 0 13 15" style="image-rendering:pixelated">
+            <rect x="0" y="0" width="10" height="15" fill="#e8e8e8" stroke="#808080" stroke-width="1"/>
+            <polygon points="10,0 13,3 10,3" fill="#c0c0c0" stroke="#808080" stroke-width="0.8"/>
+            <rect x="10" y="3" width="3" height="12" fill="#e8e8e8" stroke="#808080" stroke-width="1"/>
+            <line x1="2" y1="4" x2="8" y2="10" stroke="#808080" stroke-width="1"/>
+            <line x1="2" y1="10" x2="8" y2="4" stroke="#808080" stroke-width="1"/>
+          </svg>
+        </div>
+        <div class="icon-label-dark">luv_sic.tmp</div>
+      </div>
+
+    </div>
+    <div class="recycle-footer" data-i18n="win.recycle.footer">
+      削除しようとしたが、できなかった。
+    </div>
+  </div>
+  <div class="status-bar">
+    <div class="status-panel flex1" data-i18n="win.recycle.status">4 object(s) — 復元不可</div>
+  </div>
+</div>
+
+<!-- Loading Dialog -->
+<div class="modal-overlay" id="loading-dialog" style="display:none">
+  <div class="win-window modal-window">
+    <div class="title-bar">
+      <span class="title-icon">
+        <svg width="12" height="14" viewBox="0 0 6 7" style="vertical-align:middle;image-rendering:pixelated">
+          <rect x="1" y="0" width="4" height="2" fill="#c0c0c0" stroke="#808080" stroke-width="0.5"/>
+          <path d="M0 2 L6 2 L5 4.5 L1 4.5 Z" fill="#c0c0c0" stroke="#808080" stroke-width="0.5"/>
+          <path d="M1 4.5 L0 7 L6 7 L5 4.5 Z" fill="#c0c0c0" stroke="#808080" stroke-width="0.5"/>
+          <line x1="2" y1="3" x2="4" y2="3.5" stroke="#808080" stroke-width="0.5"/>
+          <line x1="2" y1="5.5" x2="4" y2="6" stroke="#808080" stroke-width="0.5"/>
+        </svg>
+      </span>
+      <span class="title-text">Tween 82.8</span>
+    </div>
+    <div class="win-body modal-body">
+      <div class="modal-icon">
+        <svg width="36" height="42" viewBox="0 0 6 7" style="image-rendering:pixelated">
+          <rect x="1" y="0" width="4" height="2" fill="#c0c0c0" stroke="#808080" stroke-width="0.4"/>
+          <path d="M0 2 L6 2 L5 4.5 L1 4.5 Z" fill="#c0c0c0" stroke="#808080" stroke-width="0.4"/>
+          <path d="M1 4.5 L0 7 L6 7 L5 4.5 Z" fill="#c0c0c0" stroke="#808080" stroke-width="0.4"/>
+          <line x1="2" y1="3" x2="4" y2="3.5" stroke="#808080" stroke-width="0.5"/>
+          <line x1="2" y1="5.5" x2="4" y2="6" stroke="#808080" stroke-width="0.5"/>
+        </svg>
+      </div>
+      <div id="loading-msg" data-i18n="loading.msg">YouTube を検索しています...</div>
+      <div class="loading-progress"><div class="loading-fill"></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- Pomodoro Timer Window -->
+<div class="win-window extra-window" id="win-pomodoro">
+  <div class="title-bar" id="title-bar-pomodoro">
+    <span class="title-icon"><svg width="10" height="14" viewBox="0 0 13 15" style="image-rendering:pixelated;vertical-align:middle" aria-hidden="true">
+  <rect x="1" y="0" width="11" height="1" fill="#808080"/>
+  <rect x="1" y="1" width="11" height="1" fill="currentColor"/>
+  <rect x="2" y="2" width="9" height="1" fill="currentColor"/>
+  <rect x="3" y="3" width="7" height="1" fill="currentColor"/>
+  <rect x="4" y="4" width="5" height="1" fill="#ffcc00"/>
+  <rect x="5" y="5" width="3" height="1" fill="#ffcc00"/>
+  <rect x="6" y="6" width="1" height="1" fill="#ffcc00"/>
+  <rect x="5" y="7" width="3" height="1" fill="#808080"/>
+  <rect x="6" y="8" width="1" height="1" fill="#ffcc00"/>
+  <rect x="5" y="9" width="3" height="1" fill="currentColor"/>
+  <rect x="4" y="10" width="5" height="1" fill="currentColor"/>
+  <rect x="3" y="11" width="7" height="1" fill="currentColor"/>
+  <rect x="2" y="12" width="9" height="1" fill="currentColor"/>
+  <rect x="1" y="13" width="11" height="1" fill="currentColor"/>
+  <rect x="1" y="14" width="11" height="1" fill="#808080"/>
+</svg></span>
+    <span class="title-text" data-i18n="pom.title">Pomodoro Timer</span>
+    <div class="title-btns">
+      <button class="title-btn" onclick="document.getElementById('win-pomodoro').style.removeProperty('display')"><svg width="7" height="7" viewBox="0 0 7 7" style="image-rendering:pixelated;display:block" aria-hidden="true"><path d="M0.5,0.5 L6.5,6.5 M6.5,0.5 L0.5,6.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/></svg></button>
+    </div>
+  </div>
+  <div class="win-body pom-body">
+    <div class="pom-display">
+      <div class="pom-phase" id="pom-phase">READY</div>
+      <div class="pom-timer" id="pom-timer">25:00</div>
+    </div>
+    <div class="pom-prog-track"><div class="pom-prog-fill" id="pom-prog-fill"></div></div>
+    <div class="pom-controls">
+      <button class="ctrl-btn pom-btn" id="pom-btn-start" data-i18n="pom.start">Start</button>
+    </div>
+    <div class="pom-sets" id="pom-sets">
+      <div class="pom-dot"></div>
+      <div class="pom-dot"></div>
+      <div class="pom-dot"></div>
+      <div class="pom-dot"></div>
+    </div>
+    <div class="pom-info" id="pom-info"></div>
+    <div class="group-box pom-settings" id="pom-settings">
+      <span class="group-label" data-i18n="pom.settings">Settings</span>
+      <div class="pom-setting-row">
+        <label data-i18n="pom.work">WORK</label>
+        <input type="number" id="pom-work-min" class="pom-input" min="1" max="120" value="25">
+        <span>min</span>
+        <div class="pom-genre-picker" id="pom-work-genre">
+          <button class="pom-genre-trigger" type="button"><span class="pom-genre-label">Lofi Hip-Hop</span><span class="pom-genre-arrow">&#9660;</span></button>
+          <div class="pom-genre-panel"></div>
+        </div>
+      </div>
+      <div class="pom-setting-row">
+        <label data-i18n="pom.break">BREAK</label>
+        <input type="number" id="pom-break-min" class="pom-input" min="1" max="60" value="5">
+        <span>min</span>
+        <div class="pom-genre-picker" id="pom-break-genre">
+          <button class="pom-genre-trigger" type="button"><span class="pom-genre-label">Jazz</span><span class="pom-genre-arrow">&#9660;</span></button>
+          <div class="pom-genre-panel"></div>
+        </div>
+      </div>
+      <div class="pom-setting-row">
+        <label data-i18n="pom.long">LONG</label>
+        <input type="number" id="pom-long-min" class="pom-input" min="1" max="60" value="15">
+        <span>min</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- To Do List Window -->
+<div class="win-window extra-window" id="win-todo">
+  <div class="title-bar" id="title-bar-todo">
+    <span class="title-icon"><svg width="10" height="13" viewBox="0 0 13 15" style="image-rendering:pixelated;vertical-align:middle" aria-hidden="true">
+  <rect x="4" y="0" width="5" height="2" fill="#808080"/>
+  <rect x="1" y="1" width="11" height="13" fill="currentColor"/>
+  <rect x="3" y="4" width="2" height="2" fill="#000080"/>
+  <line x1="6" y1="5" x2="10" y2="5" stroke="currentColor" stroke-width="0.8"/>
+  <rect x="3" y="7" width="2" height="2" fill="currentColor"/>
+  <line x1="6" y1="8" x2="10" y2="8" stroke="currentColor" stroke-width="0.8"/>
+</svg></span>
+    <span class="title-text" data-i18n="todo.title">Notepad</span>
+    <div class="title-btns">
+      <button class="title-btn" onclick="document.getElementById('win-todo').style.removeProperty('display')"><svg width="7" height="7" viewBox="0 0 7 7" style="image-rendering:pixelated;display:block" aria-hidden="true"><path d="M0.5,0.5 L6.5,6.5 M6.5,0.5 L0.5,6.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/></svg></button>
+    </div>
+  </div>
+  <div class="win-body todo-body">
+    <div class="todo-date" id="todo-date"></div>
+    <div class="todo-input-row">
+      <input type="text" id="todo-input" class="todo-input" placeholder="" maxlength="100">
+      <button class="ctrl-btn todo-add-btn" id="todo-add-btn" onclick="todoAdd()" data-i18n="todo.add">Add</button>
+    </div>
+    <div class="todo-list" id="todo-list"></div>
+    <div class="todo-status" id="todo-status"></div>
+  </div>
+</div>
+
+<!-- Guestbook Window -->
+<div class="win-window extra-window" id="win-guestbook">
+  <div class="title-bar" id="title-bar-guestbook">
+    <span class="title-icon"><svg width="12" height="12" viewBox="0 0 16 16" style="image-rendering:pixelated;vertical-align:middle" aria-hidden="true"><rect x="1" y="1" width="11" height="14" fill="#ffffcc"/><rect x="1" y="1" width="11" height="1" fill="#fff"/><rect x="4" y="4" width="6" height="1" fill="currentColor"/><rect x="4" y="7" width="5" height="1" fill="currentColor"/><rect x="4" y="10" width="7" height="1" fill="currentColor"/></svg></span>
+    <span class="title-text" data-i18n="gb.title">Tween 82.8 Guestbook</span>
+    <div class="title-btns">
+      <button class="title-btn" onclick="closeGuestbook()"><svg width="7" height="7" viewBox="0 0 7 7" style="image-rendering:pixelated;display:block" aria-hidden="true"><path d="M0.5,0.5 L6.5,6.5 M6.5,0.5 L0.5,6.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/></svg></button>
+    </div>
+  </div>
+  <div class="win-body gb-body">
+    <div class="gb-messages" id="gb-messages"></div>
+    <div class="gb-form">
+      <div class="gb-form-row">
+        <label data-i18n="gb.name">Radio Name</label>
+        <input type="text" id="gb-name" class="gb-input" maxlength="20" placeholder="名無しリスナー">
+      </div>
+      <div class="gb-form-row">
+        <label data-i18n="gb.msg">Message</label>
+        <textarea id="gb-msg" class="gb-textarea" maxlength="200" rows="2"></textarea>
+      </div>
+      <div class="gb-form-row gb-form-actions">
+        <button class="ctrl-btn" id="gb-send" onclick="gbSend()" data-i18n="gb.send">Send</button>
+      </div>
+    </div>
+    <div class="gb-status" id="gb-status"></div>
+  </div>
+</div>
+
+<!-- Inbox Window (Outlook Express style) -->
+<div class="win-window extra-window" id="win-inbox">
+  <div class="title-bar" id="title-bar-inbox">
+    <span class="title-icon"><svg width="12" height="12" viewBox="0 0 16 16" style="image-rendering:pixelated;vertical-align:middle" aria-hidden="true"><rect x="1" y="3" width="14" height="10" fill="#ffffcc"/><rect x="1" y="3" width="14" height="1" fill="#fff"/><polygon points="1,3 8,9 15,3 15,13 1,13" fill="none" stroke="#aa8800" stroke-width="1"/><polygon points="1,3 8,9 15,3" fill="#ffcc00"/></svg></span>
+    <span class="title-text" data-i18n="inbox.title">Inbox - Tween 82.8 Mail</span>
+    <div class="title-btns">
+      <button class="title-btn" onclick="closeInbox()"><svg width="7" height="7" viewBox="0 0 7 7" style="image-rendering:pixelated;display:block" aria-hidden="true"><path d="M0.5,0.5 L6.5,6.5 M6.5,0.5 L0.5,6.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/></svg></button>
+    </div>
+  </div>
+  <!-- Toolbar -->
+  <div class="inbox-toolbar">
+    <button class="inbox-toolbar-btn" onclick="openInboxCompose()">
+      <svg width="16" height="14" viewBox="0 0 16 14" style="image-rendering:pixelated"><rect x="0" y="2" width="12" height="9" fill="#ffffcc" stroke="#aa8800" stroke-width="1"/><polygon points="0,2 6,7 12,2" fill="#ffcc00"/><rect x="9" y="0" width="7" height="8" fill="#fff" stroke="#808080" stroke-width="1"/><rect x="10" y="2" width="5" height="1" fill="#000080"/><rect x="10" y="4" width="4" height="1" fill="#000080"/></svg>
+      <span data-i18n="inbox.newmail">New Mail</span>
+    </button>
+  </div>
+  <!-- List pane -->
+  <div class="win-body inbox-body" id="inbox-list-pane">
+    <div class="inbox-table-wrap">
+      <table class="inbox-table">
+        <thead>
+          <tr>
+            <th class="inbox-th-from" data-i18n="inbox.th.from">From</th>
+            <th class="inbox-th-subject" data-i18n="inbox.th.subject">Subject</th>
+            <th class="inbox-th-date" data-i18n="inbox.th.date">Date</th>
+          </tr>
+        </thead>
+        <tbody id="inbox-list"></tbody>
+      </table>
+    </div>
+  </div>
+  <!-- Read pane (admin only, toggled) -->
+  <div class="win-body inbox-body inbox-read-body" id="inbox-read-pane" style="display:none">
+    <div class="inbox-read-header">
+      <button class="ctrl-btn inbox-back-btn" onclick="inboxBackToList()" data-i18n="inbox.back">&lt; Back</button>
+    </div>
+    <div class="inbox-read-fields">
+      <div class="inbox-read-row"><span class="inbox-read-label" data-i18n="inbox.from">From:</span> <span id="inbox-read-from"></span></div>
+      <div class="inbox-read-row"><span class="inbox-read-label" data-i18n="inbox.date">Date:</span> <span id="inbox-read-date"></span></div>
+      <div class="inbox-read-row"><span class="inbox-read-label" data-i18n="inbox.subject">Subject:</span> <strong id="inbox-read-subject"></strong></div>
+      <div class="inbox-read-row" id="inbox-read-email-row"><span class="inbox-read-label" data-i18n="inbox.compose.email">Email:</span> <span id="inbox-read-email"></span></div>
+    </div>
+    <div class="inbox-read-content" id="inbox-read-body"></div>
+  </div>
+  <div class="inbox-status" id="inbox-status">0 message(s), 0 unread</div>
+</div>
+
+<!-- Inbox Compose Window -->
+<div class="win-window extra-window" id="win-inbox-compose">
+  <div class="title-bar" id="title-bar-inbox-compose">
+    <span class="title-icon"><svg width="12" height="12" viewBox="0 0 16 16" style="image-rendering:pixelated;vertical-align:middle" aria-hidden="true"><rect x="0" y="2" width="12" height="9" fill="#ffffcc" stroke="#aa8800" stroke-width="1"/><polygon points="0,2 6,7 12,2" fill="#ffcc00"/><rect x="9" y="0" width="7" height="8" fill="#fff" stroke="#808080" stroke-width="1"/><rect x="10" y="2" width="5" height="1" fill="#000080"/><rect x="10" y="4" width="4" height="1" fill="#000080"/></svg></span>
+    <span class="title-text" data-i18n="inbox.compose.title">New Message</span>
+    <div class="title-btns">
+      <button class="title-btn" onclick="closeInboxCompose()"><svg width="7" height="7" viewBox="0 0 7 7" style="image-rendering:pixelated;display:block" aria-hidden="true"><path d="M0.5,0.5 L6.5,6.5 M6.5,0.5 L0.5,6.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/></svg></button>
+    </div>
+  </div>
+  <div class="win-body inbox-compose-body">
+    <div class="inbox-compose-field">
+      <label data-i18n="inbox.compose.from">From:</label>
+      <input type="text" id="inbox-compose-name" class="inbox-compose-input" maxlength="20" placeholder="名無しリスナー">
+    </div>
+    <div class="inbox-compose-field">
+      <label data-i18n="inbox.compose.subj">Subject:</label>
+      <input type="text" id="inbox-compose-subject" class="inbox-compose-input" maxlength="100">
+    </div>
+    <div class="inbox-compose-field">
+      <label data-i18n="inbox.compose.email">Email:</label>
+      <input type="email" id="inbox-compose-email" class="inbox-compose-input" maxlength="100" placeholder="(optional)">
+    </div>
+    <div class="inbox-compose-field inbox-compose-field-body">
+      <textarea id="inbox-compose-body" class="inbox-compose-textarea" maxlength="1000" rows="6" placeholder="Write your message..."></textarea>
+    </div>
+    <div class="inbox-compose-actions">
+      <button class="ctrl-btn" onclick="inboxSend()" data-i18n="inbox.send">Send</button>
+      <span class="inbox-compose-hint">Ctrl+Enter</span>
+      <span id="inbox-compose-status" class="inbox-compose-status"></span>
+    </div>
+  </div>
+</div>
+
+<!-- "You've got mail!" Dialog (admin only) -->
+<div class="modal-overlay" id="inbox-mail-dialog" style="display:none">
+  <div class="win-window modal-window inbox-mail-window">
+    <div class="title-bar">
+      <span class="title-icon"><svg width="12" height="12" viewBox="0 0 16 16" style="image-rendering:pixelated;vertical-align:middle" aria-hidden="true"><rect x="1" y="3" width="14" height="10" fill="#ffffcc"/><polygon points="1,3 8,9 15,3" fill="#ffcc00"/></svg></span>
+      <span class="title-text" data-i18n="inbox.mail.title">Tween 82.8 Mail</span>
+      <div class="title-btns">
+        <button class="title-btn" onclick="closeMailDialog()"><svg width="7" height="7" viewBox="0 0 7 7" style="image-rendering:pixelated;display:block" aria-hidden="true"><path d="M0.5,0.5 L6.5,6.5 M6.5,0.5 L0.5,6.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/></svg></button>
+      </div>
+    </div>
+    <div class="win-body modal-body inbox-mail-body">
+      <div class="inbox-mail-icon"><svg width="48" height="40" viewBox="0 0 48 40" style="image-rendering:pixelated"><rect x="2" y="6" width="44" height="30" fill="#ffffcc" stroke="#aa8800" stroke-width="2"/><polygon points="2,6 24,24 46,6" fill="#ffcc00" stroke="#aa8800" stroke-width="1"/><polygon points="2,36 18,22" fill="none" stroke="#aa8800" stroke-width="1"/><polygon points="46,36 30,22" fill="none" stroke="#aa8800" stroke-width="1"/></svg></div>
+      <div class="inbox-mail-title" data-i18n="inbox.mail.msg">You've got mail!</div>
+      <div class="inbox-mail-count" id="inbox-mail-count-wrap"></div>
+      <div class="inbox-mail-buttons">
+        <button class="ctrl-btn inbox-mail-btn" onclick="mailDialogOpenInbox()" data-i18n="inbox.mail.open">Open Inbox</button>
+        <button class="ctrl-btn inbox-mail-btn" onclick="closeMailDialog()" data-i18n="inbox.mail.later">Later</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Weather Window -->
+<div class="win-window extra-window" id="win-weather">
+  <div class="title-bar" id="title-bar-weather">
+    <span class="title-icon"><svg width="12" height="12" viewBox="0 0 16 16" style="image-rendering:pixelated;vertical-align:middle" aria-hidden="true"><circle cx="10" cy="5" r="4" fill="#ffdd44"/><circle cx="12" cy="4" r="3" fill="currentColor"/><rect x="2" y="10" width="10" height="3" fill="#c0c0c0"/><rect x="4" y="9" width="6" height="1" fill="#c0c0c0"/></svg></span>
+    <span class="title-text" data-i18n="weather.title">Tween City Weather</span>
+    <div class="title-btns">
+      <button class="title-btn" onclick="closeWeather()"><svg width="7" height="7" viewBox="0 0 7 7" style="image-rendering:pixelated;display:block" aria-hidden="true"><path d="M0.5,0.5 L6.5,6.5 M6.5,0.5 L0.5,6.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/></svg></button>
+    </div>
+  </div>
+  <div class="win-body weather-body">
+    <div class="weather-display" id="weather-display"></div>
+  </div>
+</div>
+
+<!-- Internet Explorer — FM 82.8 Terminal Stream -->
+<div class="win-window extra-window" id="win-ie" style="width:480px">
+  <div class="title-bar" id="title-bar-ie">
+    <span class="title-icon"><svg width="12" height="12" viewBox="0 0 16 16" style="image-rendering:pixelated;vertical-align:middle"><rect x="0" y="0" width="16" height="16" fill="#000"/><rect x="0" y="0" width="16" height="3" fill="#c0c0c0"/><text x="1" y="11" fill="#c0c0c0" font-size="6" font-family="monospace">C:\&gt;</text></svg></span>
+    <span class="title-text">MS-DOS Prompt — FM 82.8 MHz</span>
+    <div class="title-btns">
+      <button class="title-btn" onclick="closeIE()"><svg width="7" height="7" viewBox="0 0 7 7" style="image-rendering:pixelated;display:block"><path d="M0.5,0.5 L6.5,6.5 M6.5,0.5 L0.5,6.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/></svg></button>
+    </div>
+  </div>
+  <div class="win-body" style="padding:0">
+    <div id="ie-terminal" style="background:#0a0e2a;padding:14px 16px;height:300px;overflow-y:auto;font-family:'VT323','Courier New',monospace;font-size:14px;color:#00ff50;line-height:2;text-shadow:0 0 4px #00ff50">
+    </div>
+  </div>
+  <div class="status-bar">
+    <div class="status-panel flex1">FM 82.8 MHz — between reality and dreams</div>
+    <div class="status-panel fixed" style="min-width:60px">STEREO</div>
+  </div>
+</div>
+
+<!-- Control Panel Window -->
+<div class="win-window extra-window" id="win-cpanel">
+  <div class="title-bar" id="title-bar-cpanel">
+    <span class="title-icon"><svg width="12" height="12" viewBox="0 0 13 13" style="image-rendering:pixelated;vertical-align:middle" aria-hidden="true"><rect x="0" y="0" width="13" height="13" fill="#c0c0c0"/><rect x="3" y="3" width="3" height="3" fill="#000080"/><rect x="8" y="3" width="3" height="3" fill="#008080"/><rect x="3" y="8" width="3" height="3" fill="#808000"/><rect x="8" y="8" width="3" height="3" fill="#800000"/></svg></span>
+    <span class="title-text" data-i18n="start.cpanel">Control Panel</span>
+    <div class="title-btns">
+      <button class="title-btn" onclick="document.getElementById('win-cpanel').style.removeProperty('display')"><svg width="7" height="7" viewBox="0 0 7 7" style="image-rendering:pixelated;display:block" aria-hidden="true"><path d="M0.5,0.5 L6.5,6.5 M6.5,0.5 L0.5,6.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/></svg></button>
+    </div>
+  </div>
+  <div class="win-body">
+    <div class="icon-grid">
+      <!-- Display -->
+      <div class="file-icon clickable" onclick="openCpDisplay()">
+        <div class="icon-img">
+          <svg width="26" height="26" viewBox="0 0 13 13" style="image-rendering:pixelated">
+            <rect x="0" y="0" width="13" height="10" fill="#c0c0c0" stroke="#808080" stroke-width="1"/>
+            <rect x="1" y="1" width="11" height="7" fill="#000080"/>
+            <rect x="4" y="9" width="5" height="1" fill="#808080"/>
+            <rect x="2" y="10" width="9" height="2" fill="#c0c0c0" stroke="#808080" stroke-width="0.5"/>
+          </svg>
+        </div>
+        <div class="icon-label-dark">Display</div>
+      </div>
+      <!-- Sound -->
+      <div class="file-icon cp-disabled">
+        <div class="icon-img">
+          <svg width="26" height="26" viewBox="0 0 14 12" style="image-rendering:pixelated">
+            <polygon points="0,4 0,8 3,8 7,12 7,0 3,4" fill="#808080"/>
+            <path d="M9 3 Q12 6 9 9" fill="none" stroke="#808080" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <div class="icon-label-dark cp-disabled-text">Sound</div>
+      </div>
+      <!-- Regional Settings -->
+      <div class="file-icon clickable" onclick="openCpRegional()">
+        <div class="icon-img">
+          <svg width="26" height="26" viewBox="0 0 14 14" style="image-rendering:pixelated">
+            <circle cx="7" cy="7" r="6" fill="#008080" stroke="#808080" stroke-width="1"/>
+            <line x1="7" y1="1" x2="7" y2="13" stroke="#ffffff" stroke-width="1"/>
+            <line x1="1" y1="7" x2="13" y2="7" stroke="#ffffff" stroke-width="1"/>
+            <ellipse cx="7" cy="7" rx="3" ry="6" fill="none" stroke="#ffffff" stroke-width="0.8"/>
+          </svg>
+        </div>
+        <div class="icon-label-dark">Regional</div>
+      </div>
+      <!-- Accessibility -->
+      <div class="file-icon cp-disabled">
+        <div class="icon-img">
+          <svg width="26" height="26" viewBox="0 0 14 14" style="image-rendering:pixelated">
+            <circle cx="7" cy="3" r="2" fill="#808080"/>
+            <rect x="3" y="5" width="8" height="1" fill="#808080"/>
+            <rect x="6" y="5" width="2" height="5" fill="#808080"/>
+            <rect x="4" y="10" width="2" height="3" fill="#808080"/>
+            <rect x="8" y="10" width="2" height="3" fill="#808080"/>
+          </svg>
+        </div>
+        <div class="icon-label-dark cp-disabled-text">Accessibility</div>
+      </div>
+    </div>
+  </div>
+  <div class="status-bar">
+    <div class="status-panel flex1">4 object(s)</div>
+  </div>
+</div>
+
+<!-- Display Properties Dialog -->
+<div class="modal-overlay" id="cp-display-dialog" style="display:none">
+  <div class="win-window modal-window cp-display-window">
+    <div class="title-bar">
+      <span class="title-text">Display Properties</span>
+      <div class="title-btns">
+        <button class="title-btn" onclick="cancelCpDisplay()"><svg width="7" height="7" viewBox="0 0 7 7" style="image-rendering:pixelated;display:block" aria-hidden="true"><path d="M0.5,0.5 L6.5,6.5 M6.5,0.5 L0.5,6.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/></svg></button>
+      </div>
+    </div>
+    <div class="win-body cp-display-body">
+      <div class="cp-section-label">Desktop Color</div>
+      <div class="cp-color-grid" id="cp-color-grid">
+        <div class="cp-color-swatch cp-color-active" data-color="#008080" onclick="setCpColor(this)"></div>
+        <div class="cp-color-swatch" data-color="#000080" onclick="setCpColor(this)"></div>
+        <div class="cp-color-swatch" data-color="#800000" onclick="setCpColor(this)"></div>
+        <div class="cp-color-swatch" data-color="#008000" onclick="setCpColor(this)"></div>
+        <div class="cp-color-swatch" data-color="#808000" onclick="setCpColor(this)"></div>
+        <div class="cp-color-swatch" data-color="#800080" onclick="setCpColor(this)"></div>
+        <div class="cp-color-swatch" data-color="#2a2a2a" onclick="setCpColor(this)"></div>
+        <div class="cp-color-swatch" data-color="#3a6ea5" onclick="setCpColor(this)"></div>
+      </div>
+      <div class="modal-btn-wrap cp-btn-row">
+        <button class="ctrl-btn modal-ok-btn" onclick="applyCpColor()">OK</button>
+        <button class="ctrl-btn modal-ok-btn" onclick="cancelCpDisplay()">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Regional Settings Dialog -->
+<div class="modal-overlay" id="cp-regional-dialog" style="display:none">
+  <div class="win-window modal-window cp-regional-window">
+    <div class="title-bar">
+      <span class="title-text">Regional Settings</span>
+      <div class="title-btns">
+        <button class="title-btn" onclick="document.getElementById('cp-regional-dialog').style.display='none'"><svg width="7" height="7" viewBox="0 0 7 7" style="image-rendering:pixelated;display:block" aria-hidden="true"><path d="M0.5,0.5 L6.5,6.5 M6.5,0.5 L0.5,6.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/></svg></button>
+      </div>
+    </div>
+    <div class="win-body cp-regional-body">
+      <div class="cp-section-label">Language / 言語</div>
+      <div class="cp-lang-options">
+        <label class="cp-radio"><input type="radio" name="cp-lang" value="ja" id="cp-lang-ja"> 日本語</label>
+        <label class="cp-radio"><input type="radio" name="cp-lang" value="en" id="cp-lang-en"> English</label>
+      </div>
+      <div class="modal-btn-wrap cp-btn-row">
+        <button class="ctrl-btn modal-ok-btn" onclick="applyCpLang()">OK</button>
+        <button class="ctrl-btn modal-ok-btn" onclick="document.getElementById('cp-regional-dialog').style.display='none'">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- About Dialog -->
+<div class="modal-overlay" id="about-dialog" style="display:none">
+  <div class="win-window modal-window about-window">
+    <div class="title-bar">
+      <span class="title-icon"><svg width="10" height="13" viewBox="0 0 5 7" style="image-rendering:pixelated;vertical-align:middle" aria-hidden="true"><rect x="3" y="0" width="1" height="5" fill="currentColor"/><rect x="4" y="0" width="1" height="3" fill="currentColor"/><rect x="1" y="4" width="3" height="2" fill="currentColor"/><rect x="0" y="5" width="3" height="1" fill="currentColor"/></svg></span>
+      <span class="title-text" data-i18n="about.title">About Tween 82.8</span>
+      <div class="title-btns">
+        <button class="title-btn" onclick="document.getElementById('about-dialog').style.display='none'"><svg width="7" height="7" viewBox="0 0 7 7" style="image-rendering:pixelated;display:block" aria-hidden="true"><path d="M0.5,0.5 L6.5,6.5 M6.5,0.5 L0.5,6.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/></svg></button>
+      </div>
+    </div>
+    <div class="win-body about-body">
+      <div class="about-top">
+        <div class="about-logo">
+          <!-- Pixel radio icon -->
+          <svg width="48" height="48" viewBox="0 0 32 32" style="image-rendering:pixelated">
+            <rect x="2" y="7" width="28" height="23" fill="#c0c0c0"/>
+            <rect x="2" y="7" width="28" height="1" fill="#ffffff"/>
+            <rect x="2" y="7" width="1" height="23" fill="#ffffff"/>
+            <rect x="29" y="7" width="1" height="23" fill="#808080"/>
+            <rect x="2" y="29" width="28" height="1" fill="#808080"/>
+            <rect x="4" y="10" width="13" height="17" fill="#404040"/>
+            <rect x="5" y="11" width="1" height="15" fill="#606060"/>
+            <rect x="7" y="11" width="1" height="15" fill="#606060"/>
+            <rect x="9" y="11" width="1" height="15" fill="#606060"/>
+            <rect x="11" y="11" width="1" height="15" fill="#606060"/>
+            <rect x="13" y="11" width="1" height="15" fill="#606060"/>
+            <rect x="15" y="11" width="1" height="15" fill="#606060"/>
+            <rect x="19" y="10" width="10" height="6" fill="#000"/>
+            <rect x="20" y="11" width="8" height="4" fill="#008080"/>
+            <rect x="20" y="19" width="7" height="7" rx="3.5" fill="#c0c0c0" stroke="#808080" stroke-width="1"/>
+            <rect x="27" y="18" width="2" height="2" fill="#00ff00"/>
+            <rect x="24" y="0" width="1" height="2" fill="#808080"/>
+            <rect x="23" y="2" width="1" height="2" fill="#808080"/>
+            <rect x="22" y="4" width="1" height="2" fill="#808080"/>
+            <rect x="21" y="6" width="1" height="2" fill="#808080"/>
+          </svg>
+        </div>
+        <div class="about-info">
+          <div class="about-name">Tween 82.8</div>
+          <div class="about-version">Version 1.0</div>
+          <div class="about-tagline" data-i18n="about.tagline">夜と夢の間のFMラジオ</div>
+          <div class="about-credits">82.8 MHz — between reality and dreams</div>
+        </div>
+      </div>
+      <div class="about-sep"></div>
+      <div class="about-sysinfo" id="about-sysinfo">System Resources: 44 genres loaded / 1 pixel cat active</div>
+      <div class="modal-btn-wrap"><button class="ctrl-btn modal-ok-btn" onclick="document.getElementById('about-dialog').style.display='none'">OK</button></div>
+    </div>
+  </div>
+</div>
+
+<!-- Notepad Dialog -->
+<div class="modal-overlay" id="notepad-dialog" style="display:none">
+  <div class="win-window modal-window notepad-window">
+    <div class="title-bar">
+      <span class="title-icon title-icon-sm">📄</span>
+      <span class="title-text" id="notepad-title">Notepad</span>
+      <div class="title-btns">
+        <button class="title-btn" onclick="document.getElementById('notepad-dialog').style.display='none'"><svg width="7" height="7" viewBox="0 0 7 7" style="image-rendering:pixelated;display:block" aria-hidden="true"><path d="M0.5,0.5 L6.5,6.5 M6.5,0.5 L0.5,6.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/></svg></button>
+      </div>
+    </div>
+    <div class="menu-bar">
+      <span class="menu-item">File</span>
+      <span class="menu-item">Edit</span>
+    </div>
+    <div class="win-body notepad-body">
+      <pre id="notepad-content" class="notepad-content"></pre>
+    </div>
+    <div class="status-bar">
+      <div class="status-panel flex1" id="notepad-status">Ln 1, Col 1</div>
+    </div>
+  </div>
+</div>
+
+<!-- Context Menu -->
+<div class="context-menu" id="context-menu" style="display:none">
+  <div class="context-menu-item" onclick="openMyComputer()" data-i18n="ctx.mycomp">Open My Computer</div>
+  <div class="context-menu-item" onclick="openMyDocuments()" data-i18n="ctx.mydocs">Open My Documents</div>
+  <div class="context-menu-item" onclick="openRecycleBin()" data-i18n="ctx.recycle">Open Recycle Bin</div>
+  <div class="context-menu-sep"></div>
+  <div class="context-menu-item" onclick="showAbout()" data-i18n="ctx.about">About Tween 82.8</div>
+</div>
+
+<!-- Start Menu -->
+<div class="start-menu" id="start-menu">
+  <div class="start-menu-sidebar"><span class="start-brand">Tween</span> 82.8</div>
+  <div class="start-menu-items">
+    <div class="start-menu-item" onclick="openWindow();closeMenus()">
+      <svg width="10" height="13" viewBox="0 0 5 7" style="image-rendering:pixelated;vertical-align:middle;flex-shrink:0" aria-hidden="true"><rect x="3" y="0" width="1" height="5" fill="currentColor"/><rect x="4" y="0" width="1" height="3" fill="currentColor"/><rect x="1" y="4" width="3" height="2" fill="currentColor"/><rect x="0" y="5" width="3" height="1" fill="currentColor"/></svg> Tween 82.8
+    </div>
+    <div class="start-menu-item" onclick="openPomodoro();closeMenus()">
+      <svg width="16" height="16" viewBox="0 0 16 16" style="image-rendering:pixelated;vertical-align:middle;flex-shrink:0" aria-hidden="true">
+        <circle cx="8" cy="9" r="6" fill="#c0c0c0" stroke="#808080" stroke-width="1"/>
+        <circle cx="8" cy="9" r="5" fill="#fff" stroke="#404040" stroke-width="1"/>
+        <rect x="7" y="4" width="2" height="1" fill="#000"/>
+        <rect x="7" y="13" width="2" height="1" fill="#000"/>
+        <rect x="2" y="8" width="1" height="2" fill="#000"/>
+        <rect x="13" y="8" width="1" height="2" fill="#000"/>
+        <rect x="7" y="6" width="2" height="4" fill="#000"/>
+        <rect x="7" y="9" width="4" height="1" fill="#000"/>
+        <circle cx="8" cy="9" r="1" fill="#f00"/>
+        <rect x="6" y="1" width="4" height="2" fill="#c0c0c0" stroke="#808080" stroke-width="0.5"/>
+      </svg> <span data-i18n="pom.icon">Pomodoro</span>
+    </div>
+    <div class="start-menu-item" onclick="openTodo();closeMenus()">
+      <svg width="16" height="16" viewBox="0 0 16 16" style="image-rendering:pixelated;vertical-align:middle;flex-shrink:0" aria-hidden="true">
+        <rect x="2" y="2" width="12" height="13" fill="#c0c0c0"/>
+        <rect x="2" y="2" width="12" height="1" fill="#fff"/>
+        <rect x="2" y="2" width="1" height="13" fill="#fff"/>
+        <rect x="13" y="2" width="1" height="13" fill="#808080"/>
+        <rect x="2" y="14" width="12" height="1" fill="#808080"/>
+        <rect x="5" y="0" width="6" height="3" fill="#808080"/>
+        <rect x="6" y="1" width="4" height="1" fill="#c0c0c0"/>
+        <rect x="4" y="4" width="8" height="9" fill="#fff"/>
+        <rect x="5" y="5" width="2" height="2" fill="#fff" stroke="#808080" stroke-width="0.5"/>
+        <line x1="5" y1="6.5" x2="6" y2="7.5" stroke="#000080" stroke-width="1"/>
+        <line x1="6" y1="7.5" x2="8" y2="5" stroke="#000080" stroke-width="1"/>
+        <rect x="8" y="6" width="3" height="1" fill="#000"/>
+        <rect x="5" y="9" width="2" height="2" fill="#fff" stroke="#808080" stroke-width="0.5"/>
+        <rect x="8" y="10" width="3" height="1" fill="#000"/>
+      </svg> <span data-i18n="todo.icon">Notepad</span>
+    </div>
+    <div class="start-menu-item" onclick="openMyDocuments();closeMenus()">
+      <svg width="14" height="13" viewBox="0 0 15 13" style="flex-shrink:0;image-rendering:pixelated">
+        <rect x="0" y="3" width="6" height="2" fill="#FFCC00" stroke="#AA8800" stroke-width="0.8"/>
+        <rect x="0" y="4" width="15" height="9" fill="#FFCC00" stroke="#AA8800" stroke-width="0.8"/>
+      </svg>
+      <span data-i18n="start.mydocs">My Documents</span>
+    </div>
+    <div class="start-menu-item" onclick="openMyComputer();closeMenus()">
+      <svg width="16" height="14" viewBox="0 0 14 12" style="flex-shrink:0;image-rendering:pixelated">
+        <rect x="0" y="0" width="14" height="9" fill="#c0c0c0" stroke="#000" stroke-width="1"/>
+        <rect x="1" y="1" width="12" height="7" fill="#000080"/>
+        <rect x="4" y="9" width="6" height="1" fill="#c0c0c0" stroke="#808080" stroke-width="0.5"/>
+        <rect x="2" y="10" width="10" height="2" fill="#c0c0c0" stroke="#808080" stroke-width="0.5"/>
+      </svg>
+      <span data-i18n="start.mycomp">My Computer</span>
+    </div>
+    <div class="start-menu-item" onclick="openRecycleBin();closeMenus()">
+      <svg width="12" height="16" viewBox="0 0 12 14" style="flex-shrink:0;image-rendering:pixelated">
+        <rect x="0" y="1" width="12" height="2" fill="#c0c0c0" stroke="#808080" stroke-width="0.5"/>
+        <rect x="4" y="0" width="4" height="2" fill="#c0c0c0" stroke="#808080" stroke-width="0.5"/>
+        <path d="M1 3.5 L2 13 L10 13 L11 3.5 Z" fill="#c0c0c0" stroke="#808080" stroke-width="0.5"/>
+        <line x1="4.5" y1="5" x2="4.5" y2="11" stroke="#808080" stroke-width="1"/>
+        <line x1="6" y1="5" x2="6" y2="11" stroke="#808080" stroke-width="1"/>
+        <line x1="7.5" y1="5" x2="7.5" y2="11" stroke="#808080" stroke-width="1"/>
+      </svg>
+      <span data-i18n="start.recycle">Recycle Bin</span>
+    </div>
+    <div class="start-menu-item" onclick="openControlPanel();closeMenus()">
+      <svg width="16" height="16" viewBox="0 0 13 13" style="flex-shrink:0;image-rendering:pixelated">
+        <rect x="0" y="0" width="13" height="13" fill="#c0c0c0"/>
+        <rect x="0" y="0" width="13" height="1" fill="#fff"/>
+        <rect x="0" y="0" width="1" height="13" fill="#fff"/>
+        <rect x="12" y="0" width="1" height="13" fill="#808080"/>
+        <rect x="0" y="12" width="13" height="1" fill="#808080"/>
+        <rect x="3" y="3" width="3" height="3" fill="#000080"/>
+        <rect x="8" y="3" width="3" height="3" fill="#008080"/>
+        <rect x="3" y="8" width="3" height="3" fill="#808000"/>
+        <rect x="8" y="8" width="3" height="3" fill="#800000"/>
+      </svg>
+      <span data-i18n="start.cpanel">Control Panel</span>
+    </div>
+    <div class="start-menu-sep"></div>
+    <div class="start-menu-item" onclick="showAbout();closeMenus()">
+      <span class="start-help-icon">?</span> <span data-i18n="start.help">Help</span>
+    </div>
+    <div class="start-menu-sep"></div>
+    <div class="start-menu-item" onclick="showShutdownDialog();closeMenus()">
+      <span class="start-shutdown-icon">&#x25CF;</span> <span data-i18n="start.shutdown">Shut Down...</span>
+    </div>
+  </div>
+</div>
+
+<!-- Shutdown Dialog -->
+<div class="shutdown-overlay" id="shutdown-overlay" style="display:none">
+  <div class="shutdown-dialog">
+    <div class="title-bar">
+      <span class="title-text" data-i18n="sd.title">Shut Down Tween 82.8</span>
+    </div>
+    <div class="shutdown-body">
+      <div class="shutdown-icon">
+        <!-- Win95 style computer with power plug icon -->
+        <svg width="48" height="48" viewBox="0 0 48 48" style="image-rendering:pixelated">
+          <!-- Monitor body -->
+          <rect x="8" y="4" width="32" height="24" fill="#c0c0c0" stroke="#808080" stroke-width="1"/>
+          <rect x="10" y="6" width="28" height="18" fill="#000080"/>
+          <!-- Screen content - small power icon -->
+          <rect x="22" y="10" width="4" height="6" fill="#ffff00"/>
+          <circle cx="24" cy="18" r="3" fill="none" stroke="#ffff00" stroke-width="1"/>
+          <!-- Monitor base -->
+          <rect x="16" y="28" width="16" height="3" fill="#c0c0c0" stroke="#808080" stroke-width="1"/>
+          <rect x="12" y="31" width="24" height="2" fill="#c0c0c0" stroke="#808080" stroke-width="1"/>
+          <!-- Power cord -->
+          <path d="M40 20 L46 20 L46 26 L44 26 L44 22 L40 22" fill="none" stroke="#808080" stroke-width="1"/>
+          <!-- Plug prongs -->
+          <rect x="44" y="19" width="2" height="2" fill="#808080"/>
+          <rect x="44" y="23" width="2" height="2" fill="#808080"/>
+        </svg>
+      </div>
+      <div class="shutdown-text">
+        <p class="shutdown-question" data-i18n="sd.question">What do you want the computer to do?</p>
+        <div class="shutdown-options">
+          <label class="shutdown-radio"><input type="radio" name="sd-opt" value="shutdown" checked> <span data-i18n="sd.shutdown">Shut down</span></label>
+          <label class="shutdown-radio"><input type="radio" name="sd-opt" value="restart"> <span data-i18n="sd.restart">Restart</span></label>
+          <label class="shutdown-radio"><input type="radio" name="sd-opt" value="standby"> <span data-i18n="sd.standby">Stand by</span></label>
+        </div>
+      </div>
+    </div>
+    <div class="shutdown-sep"></div>
+    <div class="shutdown-buttons">
+      <button class="ctrl-btn" onclick="doShutdown()">OK</button>
+      <button class="ctrl-btn" onclick="cancelShutdown()" data-i18n="sd.cancel">Cancel</button>
+      <button class="ctrl-btn" onclick="cancelShutdown()" data-i18n="sd.help">Help</button>
+    </div>
+  </div>
+</div>
+
+<!-- Shutdown Screen -->
+<div class="shutdown-screen" id="shutdown-screen" style="display:none">
+  <div class="shutdown-msg" id="shutdown-msg"></div>
+</div>
+
+<!-- Hidden YouTube player -->
+<div id="yt-wrap">
+  <div id="yt-player"></div>
+</div>
+
+<!-- Taskbar -->
+<div class="taskbar">
+  <button class="start-btn" id="start-btn" onclick="toggleStartMenu(event)">
+    <div class="start-logo">
+      <span></span><span></span><span></span><span></span>
+    </div>
+    Start
+  </button>
+  <div class="taskbar-divider"></div>
+
+  <!-- Quick Launch -->
+  <div class="quick-launch">
+    <button class="ql-btn" onclick="openMyComputer()" title="My Computer">
+      <svg width="16" height="16" viewBox="0 0 16 16" style="image-rendering:pixelated">
+        <rect x="1" y="0" width="14" height="10" fill="#c0c0c0"/>
+        <rect x="1" y="0" width="14" height="1" fill="#fff"/>
+        <rect x="2" y="1" width="12" height="7" fill="#000080"/>
+        <rect x="14" y="0" width="1" height="10" fill="#808080"/>
+        <rect x="5" y="10" width="6" height="1" fill="#808080"/>
+        <rect x="3" y="11" width="10" height="2" fill="#c0c0c0"/>
+        <rect x="3" y="11" width="10" height="1" fill="#fff"/>
+        <rect x="2" y="14" width="12" height="2" fill="#c0c0c0"/>
+        <rect x="4" y="14" width="2" height="1" fill="#fff"/>
+        <rect x="7" y="14" width="2" height="1" fill="#fff"/>
+        <rect x="10" y="14" width="2" height="1" fill="#fff"/>
+      </svg>
+    </button>
+    <button class="ql-btn" onclick="openMyDocuments()" title="My Documents">
+      <svg width="16" height="16" viewBox="0 0 16 16" style="image-rendering:pixelated">
+        <rect x="0" y="3" width="7" height="2" fill="#ffcc00"/>
+        <rect x="0" y="3" width="7" height="1" fill="#ffe880"/>
+        <rect x="0" y="4" width="15" height="11" fill="#ffcc00"/>
+        <rect x="0" y="4" width="15" height="1" fill="#ffe880"/>
+        <rect x="0" y="4" width="1" height="11" fill="#ffe880"/>
+        <rect x="14" y="4" width="1" height="11" fill="#aa8800"/>
+        <rect x="0" y="14" width="15" height="1" fill="#aa8800"/>
+      </svg>
+    </button>
+    <button class="ql-btn" onclick="openRecycleBin()" title="Recycle Bin">
+      <svg width="16" height="16" viewBox="0 0 16 16" style="image-rendering:pixelated">
+        <rect x="5" y="0" width="6" height="2" fill="#c0c0c0"/>
+        <rect x="5" y="0" width="6" height="1" fill="#fff"/>
+        <rect x="3" y="2" width="10" height="2" fill="#c0c0c0"/>
+        <rect x="3" y="2" width="10" height="1" fill="#fff"/>
+        <rect x="3" y="4" width="10" height="11" fill="#c0c0c0"/>
+        <rect x="3" y="4" width="1" height="11" fill="#fff"/>
+        <rect x="12" y="4" width="1" height="11" fill="#808080"/>
+        <rect x="3" y="14" width="10" height="1" fill="#808080"/>
+        <rect x="6" y="6" width="1" height="7" fill="#808080"/>
+        <rect x="8" y="6" width="1" height="7" fill="#808080"/>
+        <rect x="10" y="6" width="1" height="7" fill="#808080"/>
+      </svg>
+    </button>
+  </div>
+  <div class="taskbar-divider"></div>
+
+  <div class="taskbar-apps">
+    <button class="taskbar-app active" id="taskbar-app" onclick="toggleMinimize()">
+      <svg width="12" height="11" viewBox="0 0 15 14" style="vertical-align:middle;image-rendering:pixelated;flex-shrink:0;margin-right:3px">
+        <line x1="11" y1="0" x2="14" y2="3" stroke="#808080" stroke-width="1"/>
+        <rect x="0" y="2" width="15" height="12" fill="#c0c0c0" stroke="#000" stroke-width="1"/>
+        <rect x="1" y="4" width="6" height="8" fill="#808080" stroke="#404040" stroke-width="0.5"/>
+        <line x1="2" y1="5" x2="2" y2="11" stroke="#c0c0c0" stroke-width="0.6"/>
+        <line x1="3.5" y1="5" x2="3.5" y2="11" stroke="#c0c0c0" stroke-width="0.6"/>
+        <line x1="5" y1="5" x2="5" y2="11" stroke="#c0c0c0" stroke-width="0.6"/>
+        <line x1="6.5" y1="5" x2="6.5" y2="11" stroke="#c0c0c0" stroke-width="0.6"/>
+        <rect x="8" y="4" width="6" height="3" fill="#ffffff" stroke="#808080" stroke-width="0.5"/>
+        <rect x="8.5" y="5" width="5" height="1.5" fill="#008080"/>
+        <rect x="11.5" y="8" width="2.5" height="2.5" fill="#000080" stroke="#808080" stroke-width="0.5"/>
+      </svg>Tween 82.8</button>
+  </div>
+  <div class="taskbar-tray">
+    <!-- Inbox tray icon -->
+    <span class="tray-icon tray-inbox" id="tray-inbox" title="Inbox" onclick="openInbox()">
+      <svg width="14" height="12" viewBox="0 0 14 12" style="vertical-align:middle;image-rendering:pixelated">
+        <rect x="0" y="2" width="14" height="10" fill="#000"/>
+        <rect x="1" y="3" width="12" height="8" fill="#c0c0c0"/>
+        <polygon points="0,2 7,7 14,2" fill="#000"/>
+      </svg>
+    </span>
+    <!-- B: 電波アイコン (82.8 signal) -->
+    <span class="tray-icon" title="82.8 MHz — 受信中">
+      <svg width="14" height="12" viewBox="0 0 14 12" style="vertical-align:middle;image-rendering:pixelated">
+        <rect x="0"  y="10" width="2" height="2" fill="#000"/>
+        <rect x="3"  y="7"  width="2" height="5" fill="#000"/>
+        <rect x="6"  y="4"  width="2" height="8" fill="#000"/>
+        <rect x="9"  y="1"  width="2" height="11" fill="#000"/>
+        <rect x="12" y="0"  width="2" height="12" fill="#808080"/>
+      </svg>
+    </span>
+    <!-- C: バッテリーアイコン -->
+    <span class="tray-icon" id="tray-battery" title="Battery">
+      <svg width="16" height="10" viewBox="0 0 16 10" style="vertical-align:middle;image-rendering:pixelated">
+        <rect x="0" y="1" width="13" height="8" fill="none" stroke="#000" stroke-width="1"/>
+        <rect x="13" y="3" width="2" height="4" fill="#000"/>
+        <rect x="1" y="2" width="10" height="6" fill="#000" id="bat-fill"/>
+      </svg>
+    </span>
+    <!-- volume -->
+    <span class="tray-vol">
+      <svg width="14" height="12" viewBox="0 0 14 12" style="vertical-align:middle;image-rendering:pixelated">
+        <polygon points="0,4 0,8 3,8 7,12 7,0 3,4" fill="#000"/>
+        <path d="M9 3 Q12 6 9 9" fill="none" stroke="#000" stroke-width="1.5"/>
+        <path d="M11 1 Q15 6 11 11" fill="none" stroke="#000" stroke-width="1.5"/>
+      </svg>
+    </span>
+    <span id="tray-lang" onclick="switchLang()" title="Switch language / 言語切替">EN</span>
+    <span id="tray-clock">--:--</span>
+  </div>
+</div>
+
+<script src="assets/js/i18n.js" defer></script>
+<script src="assets/js/app.js" defer></script>
+<script src="assets/js/pomodoro.js" defer></script>
+<script src="assets/js/todo.js" defer></script>
+<script src="assets/js/guestbook.js" defer></script>
+<script src="assets/js/inbox.js" defer></script>
+<script src="assets/js/weather.js" defer></script>
+<script src="assets/js/tray.js" defer></script>
+<script>
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("./sw.js").catch(() => {});
+}
+</script>
+
+</body>
+</html>

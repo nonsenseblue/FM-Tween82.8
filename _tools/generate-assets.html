@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>Tween 82.8 — Asset Generator</title>
+<style>
+  body { font-family: 'Courier New', monospace; background: #0a0e2a; color: #00ff00;
+         padding: 24px; margin: 0; }
+  h1   { font-size: 16px; color: #ffffff; margin-bottom: 16px; }
+  .row { margin-bottom: 20px; }
+  canvas { display: block; border: 1px solid #333; margin-bottom: 8px; }
+  button { background: #c0c0c0; color: #000; border: 2px outset #fff; padding: 4px 12px;
+           font-family: inherit; cursor: pointer; font-size: 12px; margin-right: 6px; }
+  button:active { border-style: inset; }
+  .label { font-size: 11px; color: #808080; margin-bottom: 4px; }
+  .done  { color: #00ff00; font-size: 12px; display: none; margin-left: 8px; }
+</style>
+</head>
+<body>
+<h1>Tween 82.8 — Asset Generator</h1>
+<p style="font-size:11px;color:#808080;margin-bottom:20px">
+  ブラウザで開いたら「Download」を押してPNGを保存してください。<br>
+  保存したファイルを <code>Tween/</code> フォルダに入れてください。
+</p>
+
+<div class="row">
+  <div class="label">icon-192.png — PWA icon (192×192)</div>
+  <canvas id="c192" width="192" height="192"></canvas>
+  <button onclick="dl('c192','icon-192.png')">⬇ Download icon-192.png</button>
+  <span class="done" id="done-192">✓ 保存完了</span>
+</div>
+
+<div class="row">
+  <div class="label">icon-512.png — PWA icon (512×512)</div>
+  <canvas id="c512" width="512" height="512"></canvas>
+  <button onclick="dl('c512','icon-512.png')">⬇ Download icon-512.png</button>
+  <span class="done" id="done-512">✓ 保存完了</span>
+</div>
+
+<div class="row">
+  <div class="label">ogp.png — OGP / Social preview (1200×630)</div>
+  <canvas id="cogp" width="1200" height="630" style="width:600px;height:315px"></canvas>
+  <button onclick="dl('cogp','ogp.png')">⬇ Download ogp.png</button>
+  <span class="done" id="done-ogp">✓ 保存完了</span>
+</div>
+
+<script>
+// ── Draw Win95 pixel icon on canvas ──────────────────────────
+function drawIcon(ctx, size) {
+  const s = size / 32; // scale factor (32 = base grid)
+  const p = (x, y, w, h, color) => {
+    ctx.fillStyle = color;
+    ctx.fillRect(x * s, y * s, w * s, h * s);
+  };
+
+  // Base silver
+  p(0, 0, 32, 32, "#c0c0c0");
+
+  // Win95 raised bevel
+  p(0, 0, 32, 1, "#ffffff"); p(0, 0, 1, 32, "#ffffff");
+  p(0, 31, 32, 1, "#000000"); p(31, 0, 1, 32, "#000000");
+  p(1, 30, 30, 1, "#808080"); p(30, 1, 1, 29, "#808080");
+
+  // Screen sunken inset (outer shadow)
+  p(3, 3, 26, 24, "#808080");
+  p(3, 3, 26, 1,  "#404040"); p(3, 3, 1, 24, "#404040");
+  p(3, 26, 26, 1, "#ffffff"); p(28, 3, 1, 24, "#ffffff");
+  // Screen fill (black)
+  p(4, 4, 24, 22, "#000000");
+
+  // ♪ pixel note (green, top-left of screen)
+  p(10, 6, 1, 6, "#00ff00"); // stem
+  p(11, 6, 2, 1, "#00ff00"); p(12, 7, 1, 1, "#00ff00"); // flag
+  p(8, 11, 3, 1, "#00ff00"); p(8, 12, 2, 1, "#00ff00"); // note head
+
+  // "82.8" pixel font (3×5 digits, 1px gap)
+  // digit "8" x=6 y=17
+  const px8 = (ox, oy) => {
+    p(ox,   oy,   3, 1, "#00ff00"); p(ox, oy+1, 1, 1, "#00ff00"); p(ox+2, oy+1, 1, 1, "#00ff00");
+    p(ox,   oy+2, 3, 1, "#00ff00"); p(ox, oy+3, 1, 1, "#00ff00"); p(ox+2, oy+3, 1, 1, "#00ff00");
+    p(ox,   oy+4, 3, 1, "#00ff00");
+  };
+  const px2 = (ox, oy) => {
+    p(ox,   oy,   3, 1, "#00ff00"); p(ox+2, oy+1, 1, 1, "#00ff00");
+    p(ox,   oy+2, 3, 1, "#00ff00"); p(ox,   oy+3, 1, 1, "#00ff00");
+    p(ox,   oy+4, 3, 1, "#00ff00");
+  };
+  px8(6, 17); px2(10, 17); p(14, 21, 1, 1, "#00ff00"); px8(16, 17);
+
+  // Taskbar strip Win95 bottom
+  p(0, 28, 32, 4, "#c0c0c0");
+  p(0, 28, 32, 1, "#808080");
+  p(0, 28, 1, 4, "#ffffff");
+}
+
+// ── Draw OGP banner (1200×630) ────────────────────────────────
+function drawOGP(ctx) {
+  const W = 1200, H = 630;
+
+  // Background: deep navy
+  ctx.fillStyle = "#0a0e2a";
+  ctx.fillRect(0, 0, W, H);
+
+  // Subtle star field
+  ctx.fillStyle = "rgba(255,255,255,0.6)";
+  const stars = [[80,60],[200,30],[350,90],[500,20],[700,50],[900,35],[1100,70],
+                 [150,200],[400,180],[650,150],[850,210],[1050,160],
+                 [50,350],[300,320],[550,380],[750,330],[1000,360],[1150,310]];
+  stars.forEach(([x,y]) => { ctx.fillRect(x, y, 2, 2); });
+
+  // Win95 window in center
+  const WX = 300, WY = 120, WW = 600, WH = 390;
+
+  // Window shadow
+  ctx.fillStyle = "rgba(0,0,0,0.4)";
+  ctx.fillRect(WX+6, WY+6, WW, WH);
+
+  // Window body
+  ctx.fillStyle = "#c0c0c0";
+  ctx.fillRect(WX, WY, WW, WH);
+
+  // Win95 bevel
+  ctx.fillStyle = "#ffffff";
+  ctx.fillRect(WX, WY, WW, 2); ctx.fillRect(WX, WY, 2, WH);
+  ctx.fillStyle = "#000000";
+  ctx.fillRect(WX, WY+WH-2, WW, 2); ctx.fillRect(WX+WW-2, WY, 2, WH);
+  ctx.fillStyle = "#808080";
+  ctx.fillRect(WX+2, WY+WH-4, WW-4, 2); ctx.fillRect(WX+WW-4, WY+2, 2, WH-4);
+
+  // Title bar (navy)
+  ctx.fillStyle = "#000080";
+  ctx.fillRect(WX+3, WY+3, WW-6, 36);
+
+  // Title bar text
+  ctx.fillStyle = "#ffffff";
+  ctx.font = "bold 18px 'Courier New', monospace";
+  ctx.fillText("♪  Tween 82.8 — Genre BGM Player", WX+12, WY+27);
+
+  // Title bar buttons
+  ["_", "□", "✕"].forEach((t, i) => {
+    const bx = WX + WW - 6 - (i + 1) * 30;
+    ctx.fillStyle = "#c0c0c0";
+    ctx.fillRect(bx, WY+5, 26, 26);
+    ctx.fillStyle = "#ffffff";
+    ctx.fillRect(bx, WY+5, 26, 2); ctx.fillRect(bx, WY+5, 2, 26);
+    ctx.fillStyle = "#808080";
+    ctx.fillRect(bx+24, WY+5, 2, 26); ctx.fillRect(bx, WY+29, 26, 2);
+    ctx.fillStyle = "#000000";
+    ctx.font = "bold 14px 'Courier New'";
+    ctx.fillText(t, bx+8, WY+24);
+  });
+
+  // Menu bar
+  ctx.fillStyle = "#c0c0c0";
+  ctx.fillRect(WX+3, WY+39, WW-6, 22);
+  ctx.fillStyle = "#000000";
+  ctx.font = "12px 'Courier New'";
+  ["File", "Playback", "Help"].forEach((m, i) => {
+    ctx.fillText(m, WX + 12 + i * 70, WY + 54);
+  });
+  // Menu separator line
+  ctx.fillStyle = "#808080";
+  ctx.fillRect(WX+3, WY+61, WW-6, 1);
+  ctx.fillStyle = "#ffffff";
+  ctx.fillRect(WX+3, WY+62, WW-6, 1);
+
+  // Window body area (white inset for visualizer)
+  ctx.fillStyle = "#000000";
+  ctx.fillRect(WX+12, WY+75, WW-24, 80);
+  ctx.fillStyle = "#808080";
+  ctx.fillRect(WX+10, WY+73, WW-20, 2); ctx.fillRect(WX+10, WY+73, 2, 84);
+  ctx.fillStyle = "#ffffff";
+  ctx.fillRect(WX+10, WY+155, WW-20, 2); ctx.fillRect(WX+WW-12, WY+73, 2, 84);
+
+  // Visualizer bars
+  const barColors = ["#55ccff","#ffeeaa","#b8a4ff","#66ffdd","#88ffdd","#ffcc55","#ff6688","#99ffaa","#aaffcc","#ff9999"];
+  const barCount = 40;
+  const barW = (WW - 36) / barCount;
+  for (let i = 0; i < barCount; i++) {
+    const h = 8 + Math.sin(i * 0.5) * 20 + Math.cos(i * 0.3) * 15;
+    ctx.fillStyle = barColors[i % barColors.length];
+    ctx.fillRect(WX + 14 + i * barW, WY + 153 - h, barW - 2, h);
+  }
+
+  // "Now Playing" group box
+  ctx.strokeStyle = "#808080";
+  ctx.lineWidth = 1;
+  ctx.strokeRect(WX+12, WY+165, WW-24, 60);
+  ctx.fillStyle = "#c0c0c0";
+  ctx.fillRect(WX+20, WY+162, 90, 8);
+  ctx.fillStyle = "#000000";
+  ctx.font = "11px 'Courier New'";
+  ctx.fillText("Now Playing", WX+22, WY+169);
+
+  // Track info
+  ctx.font = "12px 'Courier New'";
+  ctx.fillStyle = "#000080";
+  ctx.fillText("LOFI HIP-HOP", WX+20, WY+188);
+  ctx.fillStyle = "#000000";
+  ctx.font = "bold 13px 'Courier New'";
+  ctx.fillText("深夜のStudy Session — lofi beats to relax", WX+20, WY+205);
+  ctx.fillStyle = "#808080";
+  ctx.font = "11px 'Courier New'";
+  ctx.fillText("Chilled Cow", WX+20, WY+219);
+
+  // Digital display (Winamp-style)
+  ctx.fillStyle = "#000000";
+  ctx.fillRect(WX+WW-130, WY+170, 115, 50);
+  ctx.fillStyle = "#00aa00";
+  ctx.font = "bold 11px 'Courier New'";
+  ctx.fillText("FM 82.8", WX+WW-122, WY+185);
+  ctx.font = "bold 20px 'Courier New'";
+  ctx.fillText("3:17", WX+WW-115, WY+205);
+  ctx.font = "9px 'Courier New'";
+  ctx.fillText("STEREO  128 KBPS", WX+WW-122, WY+218);
+
+  // Progress bar
+  ctx.fillStyle = "#808080";
+  ctx.fillRect(WX+10, WY+231, 2, 14); ctx.fillRect(WX+10, WY+231, WW-20, 2);
+  ctx.fillStyle = "#ffffff";
+  ctx.fillRect(WX+12, WY+243, WW-24, 2); ctx.fillRect(WX+WW-12, WY+231, 2, 14);
+  ctx.fillStyle = "#c0c0c0";
+  ctx.fillRect(WX+12, WY+233, WW-24, 10);
+  ctx.fillStyle = "#000080";
+  ctx.fillRect(WX+12, WY+233, (WW-24) * 0.42, 10);
+
+  // Control buttons area
+  ctx.fillStyle = "#000000";
+  ctx.font = "20px sans-serif";
+  ["⏮", "⏸", "⏭"].forEach((sym, i) => {
+    const bx = WX + (WW/2) - 48 + i * 48;
+    ctx.fillStyle = "#c0c0c0";
+    ctx.fillRect(bx - 14, WY+252, 32, 26);
+    ctx.fillStyle = "#ffffff";
+    ctx.fillRect(bx-14, WY+252, 32, 2); ctx.fillRect(bx-14, WY+252, 2, 26);
+    ctx.fillStyle = "#808080";
+    ctx.fillRect(bx+16, WY+252, 2, 26); ctx.fillRect(bx-14, WY+276, 32, 2);
+    ctx.fillStyle = "#000";
+    ctx.font = "16px sans-serif";
+    ctx.fillText(sym, bx - 7, WY+271);
+  });
+
+  // Taskbar at window bottom
+  ctx.fillStyle = "#c0c0c0";
+  ctx.fillRect(WX+3, WY+WH-30, WW-6, 27);
+  ctx.fillStyle = "#808080";
+  ctx.fillRect(WX+3, WY+WH-30, WW-6, 1);
+
+  // Start button
+  ctx.fillStyle = "#c0c0c0";
+  ctx.fillRect(WX+8, WY+WH-26, 55, 20);
+  ctx.fillStyle = "#ffffff";
+  ctx.fillRect(WX+8, WY+WH-26, 55, 2); ctx.fillRect(WX+8, WY+WH-26, 2, 20);
+  ctx.fillStyle = "#808080";
+  ctx.fillRect(WX+61, WY+WH-26, 2, 20); ctx.fillRect(WX+8, WY+WH-8, 55, 2);
+  ctx.fillStyle = "#000";
+  ctx.font = "bold 11px 'Courier New'";
+  ctx.fillText("▶ Start", WX+13, WY+WH-12);
+
+  // Clock in tray
+  ctx.fillStyle = "#808080";
+  ctx.fillRect(WX+WW-75, WY+WH-26, 1, 20);
+  ctx.fillStyle = "#000";
+  ctx.font = "11px 'Courier New'";
+  ctx.fillText("03:17", WX+WW-64, WY+WH-12);
+
+  // Outside text: app name + tagline
+  ctx.fillStyle = "#ffffff";
+  ctx.font = "bold 52px 'Georgia', serif";
+  ctx.textAlign = "left";
+  ctx.fillText("Tween", 66, 230);
+  ctx.fillStyle = "#00ff00";
+  ctx.font = "bold 52px 'Courier New', monospace";
+  ctx.fillText("82.8", 66, 286);
+
+  ctx.fillStyle = "rgba(255,255,255,0.6)";
+  ctx.font = "18px 'Courier New', monospace";
+  ctx.fillText("現実と夢の間のFMラジオ", 66, 320);
+  ctx.fillStyle = "rgba(255,255,255,0.35)";
+  ctx.font = "13px 'Courier New', monospace";
+  ctx.fillText("Free · No Ads · PWA", 66, 346);
+
+  // Divider line between text and window
+  ctx.strokeStyle = "rgba(255,255,255,0.1)";
+  ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(260, 80); ctx.lineTo(260, 550); ctx.stroke();
+}
+
+// ── Render ────────────────────────────────────────────────────
+window.addEventListener("load", () => {
+  const c192 = document.getElementById("c192");
+  drawIcon(c192.getContext("2d"), 192);
+
+  const c512 = document.getElementById("c512");
+  c512.style.width = "128px"; c512.style.height = "128px";
+  drawIcon(c512.getContext("2d"), 512);
+
+  const cogp = document.getElementById("cogp");
+  drawOGP(cogp.getContext("2d"));
+});
+
+// ── Download helper ───────────────────────────────────────────
+function dl(canvasId, filename) {
+  const canvas = document.getElementById(canvasId);
+  const a = document.createElement("a");
+  a.href = canvas.toDataURL("image/png");
+  a.download = filename;
+  a.click();
+  const key = canvasId.replace("c","done-").replace("192","192").replace("512","512").replace("ogp","ogp");
+  const doneId = canvasId === "c192" ? "done-192" : canvasId === "c512" ? "done-512" : "done-ogp";
+  const doneEl = document.getElementById(doneId);
+  if (doneEl) { doneEl.style.display = "inline"; }
+}
+</script>
+</body>
+</html>

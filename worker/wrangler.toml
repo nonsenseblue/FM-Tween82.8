@@ -1,0 +1,7 @@
+name            = "tween-api"
+main            = "worker.js"
+compatibility_date = "2024-09-01"
+
+[[kv_namespaces]]
+binding = "TWEEN_CACHE"
+id      = "117d3d8880b74f36af1977c69e5b9e9e"

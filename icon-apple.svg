@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180">
+
+  <!-- Silver background -->
+  <rect width="180" height="180" fill="#c0c0c0"/>
+
+  <!-- Win95 bevel on outer edge -->
+  <rect x="0" y="0" width="180" height="2" fill="#ffffff"/>
+  <rect x="0" y="0" width="2" height="180" fill="#ffffff"/>
+  <rect x="0" y="178" width="180" height="2" fill="#808080"/>
+  <rect x="178" y="0" width="2" height="180" fill="#808080"/>
+
+  <!-- Screen bezel (sunken inset, like CRT frame) -->
+  <rect x="20" y="28" width="140" height="124" fill="#404040"/>
+  <rect x="20" y="28" width="140" height="2" fill="#808080"/>
+  <rect x="20" y="28" width="2" height="124" fill="#808080"/>
+  <rect x="20" y="150" width="140" height="2" fill="#ffffff"/>
+  <rect x="158" y="28" width="2" height="124" fill="#ffffff"/>
+
+  <!-- Screen area (black CRT) -->
+  <rect x="22" y="30" width="136" height="120" rx="2" fill="#000000"/>
+
+  <!-- CRT scanlines -->
+  <defs>
+    <pattern id="scanlines" width="4" height="4" patternUnits="userSpaceOnUse">
+      <rect width="4" height="2" fill="rgba(0,255,0,0.03)"/>
+      <rect y="2" width="4" height="2" fill="rgba(0,0,0,0.05)"/>
+    </pattern>
+  </defs>
+  <rect x="22" y="30" width="136" height="120" rx="2" fill="url(#scanlines)"/>
+
+  <!-- Screen edge glow -->
+  <rect x="22" y="30" width="136" height="120" rx="2" fill="none" stroke="rgba(0,255,0,0.08)" stroke-width="1"/>
+
+  <!-- ♪ pixel art (green phosphor) -->
+  <rect x="58" y="46" width="5" height="30" fill="#00ff00"/>
+  <rect x="63" y="46" width="10" height="5" fill="#00ff00"/>
+  <rect x="68" y="51" width="5" height="5" fill="#00ff00"/>
+  <rect x="46" y="71" width="15" height="5" fill="#00ff00"/>
+  <rect x="46" y="76" width="10" height="5" fill="#00ff00"/>
+
+  <!-- "82.8" pixel text -->
+  <rect x="38" y="96" width="15" height="4" fill="#00ff00"/>
+  <rect x="38" y="100" width="5" height="4" fill="#00ff00"/>
+  <rect x="48" y="100" width="5" height="4" fill="#00ff00"/>
+  <rect x="38" y="104" width="15" height="4" fill="#00ff00"/>
+  <rect x="38" y="108" width="5" height="4" fill="#00ff00"/>
+  <rect x="48" y="108" width="5" height="4" fill="#00ff00"/>
+  <rect x="38" y="112" width="15" height="4" fill="#00ff00"/>
+
+  <rect x="58" y="96" width="15" height="4" fill="#00ff00"/>
+  <rect x="68" y="100" width="5" height="4" fill="#00ff00"/>
+  <rect x="58" y="104" width="15" height="4" fill="#00ff00"/>
+  <rect x="58" y="108" width="5" height="4" fill="#00ff00"/>
+  <rect x="58" y="112" width="15" height="4" fill="#00ff00"/>
+
+  <rect x="78" y="112" width="4" height="4" fill="#00ff00"/>
+
+  <rect x="86" y="96" width="15" height="4" fill="#00ff00"/>
+  <rect x="86" y="100" width="5" height="4" fill="#00ff00"/>
+  <rect x="96" y="100" width="5" height="4" fill="#00ff00"/>
+  <rect x="86" y="104" width="15" height="4" fill="#00ff00"/>
+  <rect x="86" y="108" width="5" height="4" fill="#00ff00"/>
+  <rect x="96" y="108" width="5" height="4" fill="#00ff00"/>
+  <rect x="86" y="112" width="15" height="4" fill="#00ff00"/>
+
+  <!-- Station indicator (power LED) -->
+  <circle cx="140" cy="46" r="3" fill="#00ff00"/>
+  <circle cx="140" cy="46" r="5" fill="none" stroke="rgba(0,255,0,0.15)" stroke-width="1"/>
+
+  <!-- Power LED on bezel -->
+  <circle cx="148" y="158" r="2" fill="#00aa00"/>
+  <rect x="146" y="156" width="4" height="4" rx="1" fill="#00aa00"/>
+
+</svg>

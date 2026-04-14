@@ -1,0 +1,11 @@
+name = "tween828"
+compatibility_date = "2024-09-01"
+pages_build_output_dir = "."
+
+# Inbox admin token — set via: wrangler pages secret put INBOX_TOKEN
+# Then use ?admin=<token> in URL to access admin features
+
+[[d1_databases]]
+binding = "GUESTBOOK_DB"
+database_name = "tween-guestbook"
+database_id = "858c35b8-3321-453d-9e06-5d07115a2b1e"
